@@ -6,6 +6,7 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 class NavUser extends Component {
     state = {
         showMenu: false,
+        dropdownMenu: '',
     }
     render() {
         return (
@@ -19,7 +20,7 @@ class NavUser extends Component {
                             >
                                 <ul>
                                     <li><img src={this.props.user.avatar_url} alt="user avatar" width="20"></img>{this.props.user.username}</li>
-                                    <li><Link to="/topics/new" className="newTopicArticle">New Topic/Article</Link></li>
+                                    <li><Link to="/topic/articles/new" className="newTopicArticle">New Topic/Article</Link></li>
                                     <li><button className="logoutSubmit" onClick={this.props.handleLogout} type="submit">Log out</button></li>
                                 </ul>
                             </div>

@@ -9,6 +9,14 @@ export const getArticles = async () => {
     return articles;
 }
 
+// todo: for Topics/Tabs/Tab
+export const getArticlesByTopic = async (topic) => {
+    const {
+        data: { articles }
+    } = await axios.get(`${base_url}/topics/${topic}/articles`)
+    return articles;
+}
+
 export const getArticlesByAuthor = async (name) => {
     const {
         data: { articles }

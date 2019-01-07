@@ -5,31 +5,28 @@ import Tabs from '../Components/Tabs';
 
 class Topics extends Component {
     state = {
-        topics: [],
         articles: [],
     }
     render() {
-        const { topics } = this.state;
         return (
             <div>
                 <h1>Library</h1>
                 <Tabs>
-                    {topics.map(topic => {
-                        return (
-                            <div label={topic}>
-                                <p></p>
-                            </div>
-                        )
-                    })}
-                    {/* <div label="Gator">
-        See ya later, <em>Alligator</em>!
-        </div>
-    <div label="Croc">
-        After 'while, <em>Crocodile</em>!
-        </div>
-    <div label="Sarcosuchus">
-        Nothing to see here, this tab is <em>extinct</em>!
-        </div> */}
+                    <div label="Coding">
+                        Render All Coding Articles!
+                    </div>
+                    <div label="Football">
+                        Render All Football Articles!
+                    </div>
+                    <div label="Cooking">
+                        Render All Cooking Articles!
+                    </div>
+                    <div label="All Articles">
+                        Render All Articles!
+                    </div>
+                    <div label="Add">
+                        Nothing to see here, this tab is <em>extinct</em>!
+                    </div>
                 </Tabs>
             </div>
         );
@@ -47,8 +44,8 @@ class Topics extends Component {
     }
 
     fetchArticles() {
-        api.getArticles().then(article => {
-            this.setState({ article });
+        api.getArticlesByTopic().then(articles => {
+            this.setState({ articles });
         });
     }
 }
