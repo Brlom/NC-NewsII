@@ -16,7 +16,7 @@ class Article extends Component {
                 <div className="articleRender">
                     <h1>{article.title}</h1>
                     <button className="voteButton upVote">⬆</button>
-                    <span className="voteCount">0{article.votes}</span>
+                    <span className="voteCount">{article.votes}</span>
                     <button className="voteButton downVote">⬇</button>
                     <Link to={`/users/${article.author}`}>{article.author}</Link>
                     {" | "}
@@ -24,8 +24,7 @@ class Article extends Component {
                     <p>{article.body}</p>
                     <hr></hr>
                     <div className="articleBottomContainer"></div>
-                    <Comments path={`/articles/${article.article_id}/comments`} article={article.topic} user={this.props.user} />
-                    {/* <button className="loadCommentsForArticle">Load Comments</button> */}
+                    <Comments path={`/articles/${article.article_id}/comments`} article={article} user={this.props.user} />
                 </div>
             );
         }

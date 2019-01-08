@@ -27,7 +27,7 @@ class Topics extends Component {
                                                     <div className="topicArticleElements" key={article.article_id}>
                                                         <img src={Icon} alt="NorthCoders News Logo" height="15px"></img>
                                                         <button className="voteButton upVote">⬆</button>
-                                                        <span className="voteCount">0{article.votes}</span>
+                                                        <span className="voteCount">{article.votes}</span>
                                                         <button className="voteButton downVote">⬇</button>
                                                         <Link to={`/articles/${article.article_id}`}>{article.title}</Link>
                                                         {" | "}
