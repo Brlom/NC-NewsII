@@ -40,4 +40,5 @@ Github has been used for versioning. For the versions available, see the tags on
 Britannia Lomax
 
 ### Acknowledgements
+[Joshtronic](https://alligator.io/react/tabs-component/) for supplying the tabs & tab components.
 All of the ncHelpers & tutors who helped FE2 from 17.12.18-14.01.19.

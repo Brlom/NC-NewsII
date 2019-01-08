@@ -150,3 +150,48 @@ ul {
   border: solid #ccc;
   border-width: 1px 1px 0 1px;
 }
+
+/* Topics component*/
+
+.topicArticleElements > li {
+  display: inline;
+}
+
+.topicArticleElements > hr {
+  border-bottom: 2px solid #00000030;
+  width: 75%;
+}
+
+/* Article component */
+
+.articleRender > hr {
+  border-bottom: 2px solid #00000030;
+  width: 75%;
+  margin-top: 30px;
+}
+
+.articleRender > p {
+  margin-top: 20px;
+}
+
+.articleBottomContainer {
+  margin: auto;
+  border-bottom: 16px dotted #00000010;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 75%;
+}
+
+.loadCommentsForArticle {
+  background: #ffffff;
+  border: #ff5050 solid 2px;
+  border-radius: 10%;
+  transition: background-color 0.3s ease-in;
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+.loadCommentsForArticle:hover {
+  background: #ff505040;
+  transition: background-color 0.25s ease-out;
+}

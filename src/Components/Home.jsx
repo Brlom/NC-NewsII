@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../api';
 import moment from 'moment';
-import { navigate } from '@reach/router';
+import { navigate, Link } from '@reach/router';
 
 class Home extends Component {
     state = {
@@ -24,7 +24,7 @@ class Home extends Component {
                         return (
                             <ul key={article.article_id}>
                                 <li>
-                                    <span>{article.title}</span>
+                                    <Link to={`/articles/${article.article_id}`}>{article.title}</Link>
                                     {" | "}
                                     <span>{moment(article.created_at).fromNow()}</span>
                                     {" | "}

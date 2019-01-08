@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { Router } from '@reach/router';
 import './App.css';
 import Auth from './Components/Base-comp/Auth';
-import Nav from './Components/Nav';
+import Nav from './Components/Base-comp/Nav';
 import Home from './Components/Home';
 import Topics from './Components/Topics';
+import Article from './Components/Article';
 import Users from './Components/Users';
+import User from './Components/User';
 import Footer from './Components/Base-comp/Footer';
 
 class App extends Component {
@@ -23,7 +25,9 @@ class App extends Component {
           <Router>
             <Home setLoginSeen={this.setLoginSeen} loginSeen={loginSeen} user={user} path="/home" />
             <Topics path="/topics" />
+            <Article user={user} path="/articles/:article_id" />
             <Users path="/users" />
+            <User path="/users/:username" />
           </Router>
           <Footer />
         </Auth>

@@ -6,7 +6,6 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 class NavUser extends Component {
     state = {
         showMenu: false,
-        dropdownMenu: '',
     }
     render() {
         return (

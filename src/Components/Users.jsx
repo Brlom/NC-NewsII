@@ -10,7 +10,7 @@ class Users extends Component {
         return (
             <React.Fragment>
                 <h2>Users</h2>
-                <ul className="user-scroll">{users.map(user => {
+                <ul className="usersList">{users.map(user => {
                     return (
                         <div key={user.user_id}>
                             <li>

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import * as api from '../api';
+import moment from 'moment';
 import Tabs from '../Components/Tabs';
+import { Link } from '@reach/router';
+import Icon from '../Images/icon.png';
 
 class Topics extends Component {
     state = {
@@ -21,8 +24,16 @@ class Topics extends Component {
                                         <ul>
                                             {articles[topic.slug].map((article) => {
                                                 return (
-                                                    <div key={article.article_id}>
-                                                        <li>{article.title}</li>
+                                                    <div className="topicArticleElements" key={article.article_id}>
+                                                        <img src={Icon} alt="NorthCoders News Logo" height="15px"></img>
+                                                        <button className="voteButton upVote">⬆</button>
+                                                        <span className="voteCount">0{article.votes}</span>
+                                                        <button className="voteButton downVote">⬇</button>
+                                                        <Link to={`/articles/${article.article_id}`}>{article.title}</Link>
+                                                        {" | "}
+                                                        <Link to={`/users/${article.author}`}>{article.name}</Link>
+                                                        {" | "}
+                                                        {moment(article.created_at).fromNow()}
                                                         <hr></hr>
                                                     </div>
                                                 )

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './Nav.css';
-import Icon from '../Images/icon.png';
+import Icon from '../../Images/icon.png';
 import { Link } from '@reach/router';
-import NavSearch from './Interactive/NavSearch';
-import NavUser from './Interactive/NavUser';
+import NavSearch from '../Interactive/NavSearch';
+import NavUser from '../Interactive/NavUser';
 
 class Nav extends Component {
     render() {
