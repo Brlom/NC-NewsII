@@ -195,3 +195,15 @@ ul {
   background: #ff505040;
   transition: background-color 0.25s ease-out;
 }
+
+/* Comments Component */
+
+.commentsHR {
+  border-bottom: 2px solid #00000030;
+  width: 75%;
+  margin-top: 10px; 
+}
+
+.commentsSort {
+  margin-left: 475px;
+}
