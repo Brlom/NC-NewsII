@@ -10,9 +10,8 @@ import Topics from './Components/Topics';
 import Article from './Components/Article';
 import Users from './Components/Users';
 import User from './Components/User';
-import ArticleSearch from './Components/Article-search/ArticleSearch';
 import ArticleResults from './Components/Article-search/ArticleResults';
-import FilteredArticles from './Components/Article-search/FilteredArticles';
+import FilteredArticles from './Utils/filteredArticles';
 import Footer from './Components/Base-comp/Footer';
 
 class App extends Component {
@@ -20,17 +19,15 @@ class App extends Component {
     user: "",
     loginSeen: false,
     articles: [],
-    searchText: '',
-    maxResults: 5,
+    searchArticleResults: [],
   }
 
   render() {
-    const { articles, user, loginSeen, searchText, maxResults } = this.state;
+    const { user, loginSeen, searchArticleResults } = this.state;
     return (
       <div className="App">
         <Auth setUser={this.setUser} user={user}>
-          <Nav user={user} handleLogout={this.handleLogout} />
-          <ArticleResults articles={articles} searchText={searchText} maxResults={maxResults} />
+          <Nav user={user} handleLogout={this.handleLogout} setArticleSearchResults={this.setArticleSearchResults} />
           <Router>
             <NewArticle path="/topics/articles/new" user={user} />
             <Home path="/home" setLoginSeen={this.setLoginSeen} loginSeen={loginSeen} user={user} />
@@ -38,6 +35,7 @@ class App extends Component {
             <Article user={user} path="/articles/:article_id" />
             <Users path="/users" />
             <User path="/users/:username" />
+            <ArticleResults articles={searchArticleResults} path="/result" />
           </Router>
           <Footer />
         </Auth>
@@ -47,7 +45,7 @@ class App extends Component {
 
   setUser = (user) => {
     this.setState({ user })
-    localStorage.setItem("user", JSON.stringify(user));
+    sessionStorage.setItem("user", JSON.stringify(user));
   }
 
   setLoginSeen = () => {
@@ -57,8 +55,14 @@ class App extends Component {
     this.setState({ loginSeen: true })
   }
 
+  setArticleSearchResults = (articles) => {
+    this.setState({
+      searchArticleResults: articles
+    })
+  }
+
   componentDidMount() {
-    const storageUser = localStorage.getItem("user");
+    const storageUser = sessionStorage.getItem("user");
     this.fetchAllArticles();
     if (storageUser) {
       this.setState({

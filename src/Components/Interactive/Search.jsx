@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import * as api from '../../api';
-// import Suggestions from './Suggestions';
+import filteredArticles from '../../Utils/filteredArticles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { navigate } from '@reach/router';
 
 class Search extends Component {
     state = {
         articles: [],
         query: "",
         showMenu: false,
+        redirect: false,
     }
 
     render() {
+        if (this.state.redirect) {
+            navigate("/result")
+        }
         return (
             <React.Fragment>
                 <button className="searchNavButton" onClick={this.showMenu}>Search<FontAwesomeIcon icon={faAngleDown} /></button>
@@ -23,6 +28,7 @@ class Search extends Component {
                                     placeholder="Search for..."
                                     ref={input => this.search = input}
                                     onChange={this.handleInputChange}
+                                    name="query"
                                 />
                                 <button className="searchDropdown" type="submit"><FontAwesomeIcon icon={faSearch} /></button>
                             </form>
@@ -35,25 +41,17 @@ class Search extends Component {
         )
     }
 
-    // handleInputChange = () => {
-    //     this.setState({
-    //         query: this.search.value
-    //     }, () => {
-    //         if (this.state.query && this.state.query.length > 1) {
-    //             if (this.state.query.length % 2 === 0) {
-    //                 this.getInfo()
-    //             }
-    //         } else if (!this.state.query) {
-    //         }
-    //     })
-    // }
-
     componentDidMount() {
         this.fetchArticles();
     }
 
+    componentDidUpdate() {
+        if (this.state.redirect) {
+            this.setState({ redirect: false });
+        }
+    }
+
     handleInputChange = (event) => {
-        console.log(event.target)
         const target = event.target;
         const name = target.name;
         const value = target.value;
@@ -62,6 +60,12 @@ class Search extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        const { query, articles } = this.state;
+        const newArticles = filteredArticles({ searchText: query, maxResults: 10, articles: articles });
+        this.props.setArticleSearchResults(newArticles);
+        this.setState({
+            redirect: true
+        })
     }
 
     fetchArticles = () => {

@@ -5,7 +5,7 @@ const base_url = "https://my-nc-knews.herokuapp.com/api";
 export const getArticles = async () => {
     const {
         data: { articles }
-    } = await axios.get(`${base_url}/articles`);
+    } = await axios.get(`${base_url}/articles?limit=50`);
     return articles;
 }
 

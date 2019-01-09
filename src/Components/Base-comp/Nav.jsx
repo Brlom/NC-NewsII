@@ -23,7 +23,7 @@ class Nav extends Component {
                     {" "}
                     <li><Link to="/users">Users</Link></li>
                     {" "}
-                    <li><Search /></li>
+                    <li><Search setArticleSearchResults={this.props.setArticleSearchResults} /></li>
                     {" "}
                     <li><NavUser user={this.props.user} handleLogout={this.props.handleLogout} /></li>
                 </ul>

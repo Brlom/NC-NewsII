@@ -1,9 +1,10 @@
 import React from 'react';
 
-const ArticleResultRow = ({ title }) => {
+const ArticleResultRow = ({ title, body }) => {
     return (
         <div>
-            {title}
+            <p>{title}</p>
+            <p>{body}</p>
         </div>
     );
 };

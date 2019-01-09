@@ -1,4 +1,6 @@
 const filteredArticles = ({ searchText, maxResults, articles }) => {
+    console.log(articles)
+    console.log(searchText)
     return articles
         .filter((article) => {
             if (article.title.toLowerCase().includes(searchText.toLowerCase())) {
