@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../api';
 import moment from 'moment';
+import { Link } from '@reach/router';
 
 class Comments extends Component {
     state = {
@@ -36,11 +37,11 @@ class Comments extends Component {
                             return (
                                 <div key={comment.comment_id}>
                                     <img src={comment.avatar_url} alt="Avatar for comment writer" height="30px"></img>
-                                    <li>{comment.author}</li>
+                                    <Link to={`/users/${comment.author}`}>{comment.author}</Link>
                                     <li>{comment.body}</li>
-                                    <button className="voteButton upVote">⬆</button>
+                                    <button className="voteButton upVote" onClick={this.handleUpVote}>⬆</button>
                                     <span className="voteCount">{comment.votes}</span>
-                                    <button className="voteButton downVote">⬇</button>
+                                    <button className="voteButton downVote" onClick={this.handleDownVote}>⬇</button>
                                     {" | "}
                                     {moment(comment.created_at).fromNow()}
                                     <hr></hr>
@@ -72,6 +73,26 @@ class Comments extends Component {
         event.preventDefault();
         this.setState({
             buttonOpen: true
+        })
+    }
+
+    handleUpVote = () => {
+        const { article } = this.props;
+        const { comments } = this.state;
+        api.voteComment(article.article_id, comments.comment_id, 1).then(() => {
+            const newComment = this.state.comments;
+            newComment.votes += 1;
+            this.setState({ comments: newComment })
+        })
+    }
+
+    handleDownVote = () => {
+        const { article } = this.props;
+        const { comments } = this.state;
+        api.voteComment(article.article_id, comments.comment_id - 1).then(() => {
+            const newComment = this.state.comments;
+            newComment.votes += -1;
+            this.setState({ comments: newComment })
         })
     }
 

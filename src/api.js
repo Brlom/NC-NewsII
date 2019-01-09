@@ -14,6 +14,11 @@ export const getCommentsByArticleId = async (article_id) => {
     return comments;
 }
 
+export const submitArticle = async (topicValue, articleBody, titleValue, user_id) => {
+    const { data: { article } } = await axios.post(`${base_url}/topics/${topicValue}/articles`, { topic: topicValue, body: articleBody, title: titleValue, user_id: user_id });
+    return article;
+}
+
 export const deleteArticle = async (article_id) => {
     await axios.delete(`${base_url}/articles/${article_id}`);
 }
@@ -25,7 +30,6 @@ export const getArticles = async () => {
     return articles;
 }
 
-// todo: for Topics/Tabs/Tab
 export const getArticlesByTopic = async (topic) => {
     const {
         data: { articles }
@@ -34,11 +38,9 @@ export const getArticlesByTopic = async (topic) => {
 }
 
 export const getArticlesByAuthor = async (name) => {
-    // console.log(name)
     const {
         data: { articles }
     } = await axios.get(`${base_url}/articles/user/${name}`);
-    // console.log(articles)
     return articles;
 }
 
@@ -60,5 +62,17 @@ export const getUserByUsername = async (username) => {
     const {
         data
     } = await axios.get(`${base_url}/users/${username}`)
+    return data;
+}
+
+export const voteArticle = async (article_id, amount) => {
+    const changeVotes = { inc_votes: amount };
+    const { data } = await axios.patch(`${base_url}/articles/${article_id}`, changeVotes);
+    return data;
+}
+
+export const voteComment = async (article_id, comment_id, amount) => {
+    const changeVotes = { inc_votes: amount };
+    const { data } = await axios.patch(`${base_url}/articles/${article_id}/comments/${comment_id}`, changeVotes);
     return data;
 }

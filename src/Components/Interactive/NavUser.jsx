@@ -19,7 +19,7 @@ class NavUser extends Component {
                             >
                                 <ul>
                                     <li><img src={this.props.user.avatar_url} alt="user avatar" width="20"></img>{this.props.user.username}</li>
-                                    <li><Link to="/topic/articles/new" className="newTopicArticle">New Topic/Article</Link></li>
+                                    <Link to="/topics/articles/new" className="newTopicArticle">New Article</Link>
                                     <li><button className="logoutSubmit" onClick={this.props.handleLogout} type="submit">Log out</button></li>
                                 </ul>
                             </div>

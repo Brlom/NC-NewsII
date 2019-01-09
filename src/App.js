@@ -3,6 +3,7 @@ import { Router } from '@reach/router';
 import './App.css';
 import Auth from './Components/Base-comp/Auth';
 import Nav from './Components/Base-comp/Nav';
+import NewArticle from './Components/Interactive/NewArticle';
 import Home from './Components/Home';
 import Topics from './Components/Topics';
 import Article from './Components/Article';
@@ -23,7 +24,8 @@ class App extends Component {
         <Auth setUser={this.setUser} user={user}>
           <Nav user={user} handleLogout={this.handleLogout} />
           <Router>
-            <Home setLoginSeen={this.setLoginSeen} loginSeen={loginSeen} user={user} path="/home" />
+            <NewArticle path="/topics/articles/new" user={user} />
+            <Home path="/home" setLoginSeen={this.setLoginSeen} loginSeen={loginSeen} user={user} />
             <Topics path="/topics" />
             <Article user={user} path="/articles/:article_id" />
             <Users path="/users" />
