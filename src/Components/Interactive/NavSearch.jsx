@@ -14,7 +14,7 @@ class NavSearch extends Component {
                     this.state.showMenu
                         ? (
                             <form
-                                className="searchInput" ref={(element) => { this.dropdownMenu = element; }}
+                                className="searchInput" ref={(element) => { this.dropdownMenu = element; }} onSubmit={this.handleSubmit}
                             >
                                 <input type="text" placeholder="Search.."></input>
                                 <button className="searchDropdown" type="submit"><FontAwesomeIcon icon={faSearch} /></button>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../api';
 import moment from 'moment';
-import { navigate, Link } from '@reach/router';
+import { Link } from '@reach/router';
 
 class Home extends Component {
     state = {
@@ -28,7 +28,9 @@ class Home extends Component {
                                     {" | "}
                                     <span>{moment(article.created_at).fromNow()}</span>
                                     {" | "}
-                                    <button className="deleteButton" onClick={this.handleDelete}>Delete</button>
+                                    <span>{article.topic}</span>
+                                    {" | "}
+                                    <button className="deleteButton" onClick={() => this.handleDelete(article.article_id)}>Delete</button>
                                 </li>
                                 <p>{article.body}</p>
                                 <hr className="textBreak"></hr>
@@ -51,7 +53,7 @@ class Home extends Component {
 
     handleDelete = (article_id) => {
         api.deleteArticle(article_id).then(() => {
-            navigate('/home');
+            this.fetchArticlesByAuthor();
         });
     }
 
@@ -59,12 +61,17 @@ class Home extends Component {
         setTimeout(() => {
             this.hideWelcomeScreen()
         }, 2000)
+        this.fetchArticlesByAuthor();
+    }
+
+    fetchArticlesByAuthor = () => {
         api.getArticlesByAuthor(this.props.user.username).then(articles => {
             this.setState({
                 articles: articles
             })
         })
     }
+
 }
 
 export default Home;

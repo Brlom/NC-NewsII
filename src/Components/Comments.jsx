@@ -13,7 +13,7 @@ class Comments extends Component {
     render() {
         const { comments, buttonOpen } = this.state;
         const { user } = this.props;
-        if (buttonOpen) {
+        if (buttonOpen && comments.length > 0) {
             return (
                 <main>
                     <span>{comments.length} Comments </span>
@@ -56,18 +56,19 @@ class Comments extends Component {
                 <button type="submit" onClick={this.handleOpenButton}>Load Comments</button>
             );
         }
-
     }
 
     componentDidMount() {
         this.fetchCommentsByArticle()
     }
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.topic !== this.props.topic) {
-            this.fetchCommentsByArticle()
-        }
-    }
+    // componentDidUpdate(prevProps, prevState) {
+    //     console.log(prevProps);
+    //     console.log(this.props);
+    //     if (prevProps.article !== this.props.article) {
+    //         this.fetchCommentsByArticle()
+    //     }
+    // }
 
     handleOpenButton = (event) => {
         event.preventDefault();

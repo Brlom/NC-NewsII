@@ -49,6 +49,6 @@ class NavUser extends Component {
 
         }
     }
-}
 
+}
 export default NavUser;

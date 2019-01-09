@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './Nav.css';
 import Icon from '../../Images/icon.png';
 import { Link } from '@reach/router';
-import NavSearch from '../Interactive/NavSearch';
+import Search from '../Interactive/Search';
+// import NavSearch from '../Interactive/NavSearch';
 import NavUser from '../Interactive/NavUser';
 
 class Nav extends Component {
@@ -22,7 +23,7 @@ class Nav extends Component {
                     {" "}
                     <li><Link to="/users">Users</Link></li>
                     {" "}
-                    <li><NavSearch /></li>
+                    <li><Search /></li>
                     {" "}
                     <li><NavUser user={this.props.user} handleLogout={this.props.handleLogout} /></li>
                 </ul>

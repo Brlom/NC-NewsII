@@ -207,3 +207,48 @@ ul {
 .commentsSort {
   margin-left: 475px;
 }
+
+/* NewArticle Component */
+
+.topicSelectorNewArticle {
+  background: #ffffff;
+  border: none 2px;
+  border-radius: 10%;
+  transition: background-color 0.3s ease-in;
+  padding: 10px;
+  font-family: sans-serif;
+  font-size: 18px;
+}
+
+.topicSelectorNewArticle:hover {
+  background: #ff505040;
+  transition: background-color 0.25s ease-out;
+}
+
+.newArticleForm {
+  padding: 15px;
+}
+
+.newArticleInput {
+  padding: 5px;
+  margin: 5px;
+}
+
+.submitButtonNewArticle {
+  background: #ffffff;
+  border: #ff5050 solid 2px;
+  border-radius: 10%;
+  transition: background-color 0.3s ease-in;
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+.submitButtonNewArticle:hover {
+  background: #ff505040;
+  transition: background-color 0.25s ease-out;
+}
+
+.textBreakNewArticle {
+  border-bottom: 16px dotted #00000010;
+  width: 75%;
+}

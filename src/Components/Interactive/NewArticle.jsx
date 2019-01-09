@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import * as api from '../../api';
 import { navigate } from '@reach/router';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 class NewArticle extends Component {
     state = {
@@ -14,19 +12,25 @@ class NewArticle extends Component {
     render() {
         return (
             <main>
-                <h1>Create a new article: </h1>
-                <button type="radio">Choose Topic <FontAwesomeIcon icon={faAngleDown} /></button>
-                <form onSubmit={this.handleSubmit}>
+                <h1>Publish a new article: </h1>
+                <form className="newArticleForm" onSubmit={this.handleSubmit}>
+                    <label>Select topic: </label>
+                    <select className="topicSelectorNewArticle" name="topicValue" value={this.state.topicValue} onChange={this.handleChange}>
+                        <option value="topics">Topics</option>
+                        <option value="coding">Coding</option>
+                        <option value="football">Football</option>
+                        <option value="cooking">Cooking</option>
+                    </select>
                     <fieldset>
-                        <legend>New Article</legend>
+                        <legend >New Article</legend>
                         Title:
-                <input placeholder="Article Title .." type="text" value={this.state.titleValue} onChange={this.handleChange}></input> <br />
+                <input className="newArticleInput" name="titleValue" placeholder="Article Title .." type="text" value={this.state.titleValue} onChange={this.handleChange}></input> <br />
                         Article:
-                <textarea placeholder="Article Text .." value={this.state.articleBody} onChange={this.handleChange} ></textarea> <br />
+                <textarea className="newArticleInput" name="articleBody" placeholder=" Article Text .." value={this.state.articleBody} onChange={this.handleChange} ></textarea> <br />
                     </fieldset>
+                    <button className="submitButtonNewArticle" type="submit" value="submit" >Publish</button>
                 </form >
-                <button type="submit" value="submit" >Publish</button>
-                <hr></hr>
+                <hr className="textBreakNewArticle"></hr>
             </main >
         );
     }
@@ -38,14 +42,17 @@ class NewArticle extends Component {
         this.setState({ [name]: value });
     }
 
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         event.preventDefault();
-        console.log(this.props.user.user_id)
-        api.submitArticle(this.state.topicValue, this.state.articleBody, this.state.titleValue, this.props.user.user_id).then(article => {
+        const { topicValue, articleBody, titleValue } = this.state;
+        // TODO: this is probable wrong - a new one is supposed to be created when posting new article!! 
+        const { user: { user_id } } = this.props;
+        api.submitArticle(topicValue, articleBody, titleValue, user_id).then(article => {
             if (!article) {
                 navigate('/home')
-            } else
+            } else {
                 navigate(`/articles/${article.article_id}`)
+            }
         })
     }
 

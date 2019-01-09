@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Router } from '@reach/router';
 import './App.css';
+import * as api from './api';
 import Auth from './Components/Base-comp/Auth';
 import Nav from './Components/Base-comp/Nav';
 import NewArticle from './Components/Interactive/NewArticle';
@@ -9,20 +10,27 @@ import Topics from './Components/Topics';
 import Article from './Components/Article';
 import Users from './Components/Users';
 import User from './Components/User';
+import ArticleSearch from './Components/Article-search/ArticleSearch';
+import ArticleResults from './Components/Article-search/ArticleResults';
+import FilteredArticles from './Components/Article-search/FilteredArticles';
 import Footer from './Components/Base-comp/Footer';
 
 class App extends Component {
   state = {
     user: "",
     loginSeen: false,
+    articles: [],
+    searchText: '',
+    maxResults: 5,
   }
 
   render() {
-    const { user, loginSeen } = this.state;
+    const { articles, user, loginSeen, searchText, maxResults } = this.state;
     return (
       <div className="App">
         <Auth setUser={this.setUser} user={user}>
           <Nav user={user} handleLogout={this.handleLogout} />
+          <ArticleResults articles={articles} searchText={searchText} maxResults={maxResults} />
           <Router>
             <NewArticle path="/topics/articles/new" user={user} />
             <Home path="/home" setLoginSeen={this.setLoginSeen} loginSeen={loginSeen} user={user} />
@@ -39,6 +47,7 @@ class App extends Component {
 
   setUser = (user) => {
     this.setState({ user })
+    localStorage.setItem("user", JSON.stringify(user));
   }
 
   setLoginSeen = () => {
@@ -48,15 +57,29 @@ class App extends Component {
     this.setState({ loginSeen: true })
   }
 
-  // componentDidMount() {
-  //   this.setState({
-  //     user: JSON.parse(localStorage.getItem("user"))
-  //   });
-  // }
+  componentDidMount() {
+    const storageUser = localStorage.getItem("user");
+    this.fetchAllArticles();
+    if (storageUser) {
+      this.setState({
+        user: JSON.parse(storageUser)
+      });
+    }
+  }
 
-  // componentDidUpdate() {
-  //   localStorage.setItem("user", JSON.stringify(this.state.user));
-  // }
+  fetchAllArticles() {
+    api.getArticles().then((articles) => {
+      this.setState({
+        articles
+      })
+    })
+  }
+
+  handleInputChange = (event) => {
+    this.setState({
+      filteredArticles: FilteredArticles(event.target.value, 20)
+    });
+  }
 
   handleLogout = (event) => {
     this.setState({
