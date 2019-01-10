@@ -3,13 +3,12 @@ import './Nav.css';
 import Icon from '../../Images/icon.png';
 import { Link } from '@reach/router';
 import Search from '../Interactive/Search';
-// import NavSearch from '../Interactive/NavSearch';
 import NavUser from '../Interactive/NavUser';
 
 class Nav extends Component {
     render() {
         return (
-            <nav>
+            <nav >
                 <ul className="nav">
                     <li><img
                         className="navLogo"
@@ -17,15 +16,16 @@ class Nav extends Component {
                         alt="NorthCoders News Logo"
                     >
                     </img></li>
-                    <li><Link to="/home">Home</Link></li>
+                    <li className="navOne"><Link to="/home">Home</Link></li>
                     {" "}
-                    <li><Link to="/topics">Topics</Link></li>
+                    <li className="navTwo"><Link to="/topics">Topics</Link></li>
                     {" "}
-                    <li><Link to="/users">Users</Link></li>
+                    <li className="navThree"><Link to="/users">Users</Link></li>
                     {" "}
-                    <li><Search setArticleSearchResults={this.props.setArticleSearchResults} /></li>
+                    <li className="navFour"><Search setArticleSearchResults={this.props.setArticleSearchResults} /></li>
                     {" "}
-                    <li><NavUser user={this.props.user} handleLogout={this.props.handleLogout} /></li>
+                    <li className="navFive"><NavUser user={this.props.user} handleLogout={this.props.handleLogout} /></li>
+                    <hr className="navHR" />
                 </ul>
             </nav>
         );
