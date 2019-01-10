@@ -32,10 +32,10 @@ class App extends Component {
             <NewArticle path="/topics/articles/new" user={user} />
             <Home path="/home" setLoginSeen={this.setLoginSeen} loginSeen={loginSeen} user={user} />
             <Topics path="/topics" />
-            <Article user={user} path="/articles/:article_id" />
+            <Article path="/articles/:article_id" user={user} />
             <Users path="/users" />
             <User path="/users/:username" />
-            <ArticleResults articles={searchArticleResults} path="/result" />
+            <ArticleResults path="/result" articles={searchArticleResults} />
           </Router>
           <Footer />
         </Auth>

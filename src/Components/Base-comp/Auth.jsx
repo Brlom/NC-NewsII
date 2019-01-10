@@ -2,7 +2,7 @@ import React from 'react';
 import Login from '../Interactive/Login';
 import Footer from '../Base-comp/Footer';
 
-const Auth = props => {
+const Auth = (props) => {
     if (props.user) {
         return (
             <React.Fragment>
@@ -17,7 +17,6 @@ const Auth = props => {
             </div>
         )
     }
-
 };
 
 export default Auth;

@@ -15,6 +15,7 @@ class Search extends Component {
 
     render() {
         if (this.state.redirect) {
+            // TODO: need to pass query to articleResults, so this can be passed as props to articleResultsRow
             navigate("/result")
         }
         return (
