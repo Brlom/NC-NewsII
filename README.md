@@ -5,8 +5,8 @@ NC-news is a news app created for northCoders bootcamp. It is written in node.js
 
 ## REPO
 
-The Front End repository can be accessed at https://github.com/Brlom/NC-NewsII 
-The Back End repository can be accessed at https://github.com/Brlom/my-nc-knews 
+The Front End repository can be accessed at https://github.com/Brlom/NC-NewsII. 
+The Back End repository can be accessed at https://github.com/Brlom/my-nc-knews. 
 
 ### Getting Started
 
