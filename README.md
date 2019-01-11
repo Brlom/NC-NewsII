@@ -1,6 +1,6 @@
 # Front-end Project NC-Knews
 
-## **NAME OF netifly url (brl-nc-knews)**
+## **my-nc-knewsii**
 NC-news is a news app created for northCoders bootcamp. It is written in node.js using a library called 'React'. It keeps track of topics, articles, users and comments. An [online](https://my-nc-newsii.netlify.com) example of this application.
 
 ## REPO
