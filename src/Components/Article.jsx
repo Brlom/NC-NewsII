@@ -31,11 +31,26 @@ class Article extends Component {
                     <div className="articleBottomContainer"></div>
                     {openButton || this.state.comments.length < 1 ?
                         <div>
-                            <CommentForm article={article.article_id} user={this.props.user} comments={comments} commentAdded={this.commentAdded} commentOrderingChanged={this.commentOrderingChanged} commentOrderDirection={commentOrderDirection} commentSortBy={commentSortBy} commentDirectionChanged={this.commentDirectionChanged} />
+                            <CommentForm
+                                article={article.article_id}
+                                user={this.props.user}
+                                comments={comments}
+                                commentAdded={this.commentAdded}
+                                commentOrderingChanged={this.commentOrderingChanged}
+                                commentOrderDirection={commentOrderDirection}
+                                commentSortBy={commentSortBy}
+                                commentDirectionChanged={this.commentDirectionChanged}
+                            />
                             {
                                 comments.map(comment => {
                                     return (
-                                        <Comment key={comment.comment_id} path={`/articles/${article.article_id}/comments`} comment={comment} article={article} user={this.props.user} commentDeleted={this.commentDeleted} />
+                                        <Comment
+                                            key={comment.comment_id}
+                                            path={`/articles/${article.article_id}/comments`}
+                                            comment={comment}
+                                            article={article}
+                                            user={this.props.user}
+                                            commentDeleted={this.commentDeleted} />
                                     );
                                 })
                             }

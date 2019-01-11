@@ -40,7 +40,6 @@ Britannia Lomax
 - When logging in, the 'Home' component should be the default screen. Right now, it will go to the last page open when closing the session.
 - On 'Topics' - I would like to implement queries so the user can sort the articles for each topic. 
 - When a new comment has been added, it takes you back to the 'load comments' button but should re-render the comments including the new comment. 
-- Votes for comments are currently not functional.
 - There are a few places where the wrong thing is rendering: on Search results - it is showing results for 'undefined', on User - the number of articles have been hardcoded. 
 - Create a tab for "all articles" on 'Topics', as well as an add tab which will redirect the user to 'New Article' form.
 - Add either a waiting ajax, or something similar, as a lot of the pages are currently taking a while to render.
@@ -48,3 +47,4 @@ Britannia Lomax
 - Add pagination buttons for the articles and comments (when number exceeds 10).
 - Fix the CSS, as there are certain elements which are not up to scratch ('Nav', 'Footer', 'CommentForm', general responsiveness)
 - Clean up code - some states could be reduced by passing props down through their parents, new reusable components could be created to reduce amount of code, a mixture of inline-CSS and separate CSS files have been used - this should be consistent, a lot of div's have been used which is not as accessible as preferred.  
+- Can currently create new article without title on 'topics select'.
