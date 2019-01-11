@@ -20,14 +20,15 @@ class App extends Component {
     loginSeen: false,
     articles: [],
     searchArticleResults: [],
+    // query: "",
   }
 
   render() {
-    const { user, loginSeen, searchArticleResults, articles } = this.state;
+    const { user, loginSeen, searchArticleResults, articles /* query */ } = this.state;
     return (
       <div className="App">
         <Auth setUser={this.setUser} user={user}>
-          <Nav user={user} handleLogout={this.handleLogout} setArticleSearchResults={this.setArticleSearchResults} />
+          <Nav user={user} handleLogout={this.handleLogout} setArticleSearchResults={this.setArticleSearchResults} /* setArticleQuery={this.setArticleQuery} */ />
           <Router>
             <NewArticle path="/topics/articles/new" user={user} />
             <Home path="/home" setLoginSeen={this.setLoginSeen} loginSeen={loginSeen} user={user} />
@@ -35,7 +36,7 @@ class App extends Component {
             <Article path="/articles/:article_id" user={user} />
             <Users path="/users" articles={articles} />
             <User path="/users/:username" />
-            <ArticleResults path="/result" articles={searchArticleResults} />
+            <ArticleResults path="/result" articles={searchArticleResults} /* query={query} */ />
           </Router>
           <Footer />
         </Auth>
@@ -60,6 +61,12 @@ class App extends Component {
       searchArticleResults: articles
     })
   }
+
+  // setArticleQuery = (query) => {
+  //   this.setState({
+  //     query: query
+  //   })
+  // }
 
   componentDidMount() {
     const storageUser = sessionStorage.getItem("user");

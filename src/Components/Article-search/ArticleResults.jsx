@@ -3,10 +3,11 @@ import ArticleResultsRow from './ArticleResultRow';
 
 class ArticleResults extends Component {
     render() {
+        const { articles } = this.props;
         return (
             <div className="component-search-results">
-                <h4>{`Search Results for: ${this.props.articles.author}`}</h4>
-                {this.props.articles.map(article => {
+                <h4>{`Search Results for: search`}</h4>
+                {articles.map(article => {
                     return <ArticleResultsRow key={article.title} article={article} />
                 })}
             </div>

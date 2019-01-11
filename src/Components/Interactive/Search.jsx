@@ -62,6 +62,7 @@ class Search extends Component {
         event.preventDefault();
         const { query, articles } = this.state;
         const newArticles = filteredArticles({ searchText: query, maxResults: 10, articles: articles });
+        // this.props.setArticleQuery(query);
         this.props.setArticleSearchResults(newArticles);
         this.setState({
             redirect: true
