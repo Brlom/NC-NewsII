@@ -6,9 +6,10 @@ const footerStyle = {
     alignItems: "center",
     justifyContent: "center",
     fontSize: "10px",
-    position: "absolute",
+    position: "sticky",
     bottom: "0",
     width: "100%",
+    background: "linear-gradient(175deg, #ffffff, 40%, #ff505060)",
 }
 
 const Footer = () => {

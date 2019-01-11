@@ -36,19 +36,11 @@ class NavUser extends Component {
         event.preventDefault();
         this.setState({
             showMenu: true
-        }, () => {
-            document.addEventListener('click', this.closeMenu);
         });
     }
 
     closeMenu = (event) => {
-        if (!this.dropdownMenu.contains(event.target)) {
-            this.setState({ showMenu: false }, () => {
-                document.removeEventListener('click', this.closeMenu);
-            });
-
-        }
+        this.setState({ showMenu: false })
     }
-
 }
 export default NavUser;

@@ -3,6 +3,7 @@
   display: grid;
   grid-template: 1 1 1 / 1;
   grid-template-areas: 'header' 'home' 'footer';
+  font-family: 'Roboto', sans-serif;
   /* background: linear-gradient(175deg, #ffffff, 40%, #ff505060); */
 } 
 

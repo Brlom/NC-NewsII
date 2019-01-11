@@ -2,11 +2,18 @@ import axios from 'axios';
 
 const base_url = "https://my-nc-knews.herokuapp.com/api";
 
-export const getArticles = async () => {
-    const {
-        data: { articles }
-    } = await axios.get(`${base_url}/articles?limit=50`);
-    return articles;
+export const getArticles = async (query) => {
+    if (query) {
+        const {
+            data: { articles }
+        } = await axios.get(`${base_url}/articles?${query}`);
+        return articles;
+    } else {
+        const {
+            data: { articles }
+        } = await axios.get(`${base_url}/articles?limit=50`);
+        return articles;
+    }
 }
 
 export const getArticleById = async (article_id) => {
@@ -14,11 +21,18 @@ export const getArticleById = async (article_id) => {
     return data;
 };
 
-export const getArticlesByTopic = async (topic) => {
-    const {
-        data: { articles }
-    } = await axios.get(`${base_url}/topics/${topic}/articles`)
-    return articles;
+export const getArticlesByTopic = async (topic, query) => {
+    if (query) {
+        const {
+            data: { articles }
+        } = await axios.get(`${base_url}/topics/${topic}/articles?${query}`);
+        return articles;
+    } else {
+        const {
+            data: { articles }
+        } = await axios.get(`${base_url}/topics/${topic}/articles`)
+        return articles;
+    }
 }
 
 export const getArticlesByAuthor = async (name) => {
@@ -28,11 +42,18 @@ export const getArticlesByAuthor = async (name) => {
     return articles;
 }
 
-export const getCommentsByArticleId = async (article_id) => {
-    const {
-        data: { comments }
-    } = await axios.get(`${base_url}/articles/${article_id}/comments`)
-    return comments;
+export const getCommentsByArticleId = async (article_id, query) => {
+    if (query) {
+        const {
+            data: { comments }
+        } = await axios.get(`${base_url}/articles/${article_id}/comments?${query}`);
+        return comments;
+    } else {
+        const {
+            data: { comments }
+        } = await axios.get(`${base_url}/articles/${article_id}/comments`)
+        return comments;
+    }
 }
 
 export const submitArticle = async (topicValue, articleBody, titleValue, user_id) => {
@@ -42,8 +63,19 @@ export const submitArticle = async (topicValue, articleBody, titleValue, user_id
     return article;
 }
 
+export const submitComment = async (article_id, user_id, body) => {
+    const {
+        data
+    } = await axios.post(`${base_url}/articles/${article_id}/comments`, { user_id: user_id, body: body });
+    return data;
+}
+
 export const deleteArticle = async (article_id) => {
     await axios.delete(`${base_url}/articles/${article_id}`);
+}
+
+export const deleteComment = async (article_id, comment_id) => {
+    await axios.delete(`${base_url}/articles/${article_id}/comments/${comment_id}`);
 }
 
 export const getTopics = async () => {

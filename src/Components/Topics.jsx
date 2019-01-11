@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../api';
-import moment from 'moment';
+import ArticleSummary from '../Components/Base-comp/ArticleSummary';
 import Tabs from '../Components/Tabs';
-import { Link } from '@reach/router';
-import Icon from '../Images/icon.png';
 
 class Topics extends Component {
     state = {
@@ -24,18 +22,7 @@ class Topics extends Component {
                                         <ul>
                                             {articles[topic.slug].map((article) => {
                                                 return (
-                                                    <div className="topicArticleElements" key={article.article_id}>
-                                                        <img src={Icon} alt="NorthCoders News Logo" height="15px"></img>
-                                                        <button className="voteButton upVote">⬆</button>
-                                                        <span className="voteCount">{article.votes}</span>
-                                                        <button className="voteButton downVote">⬇</button>
-                                                        <Link to={`/articles/${article.article_id}`}>{article.title}</Link>
-                                                        {" | "}
-                                                        <Link to={`/users/${article.author}`}>{article.name}</Link>
-                                                        {" | "}
-                                                        {moment(article.created_at).fromNow()}
-                                                        <hr></hr>
-                                                    </div>
+                                                    <ArticleSummary key={article.article_id} article={article} />
                                                 )
                                             })}
                                         </ul>
@@ -53,26 +40,7 @@ class Topics extends Component {
             )
         } else {
             return (
-                <div>
-                    <h1>Article Library</h1>
-                    <Tabs>
-                        <div label="Coding">
-                            Render All Coding Articles!
-                        </div>
-                        <div label="Football">
-                            Render All Football Articles!
-                        </div>
-                        <div label="Cooking">
-                            Render All Cooking Articles!
-                        </div>
-                        <div label="All Articles">
-                            Render All Articles!
-                        </div>
-                        <div label="Add">
-                            Nothing to see here, this tab is <em>extinct</em>!
-                        </div>
-                    </Tabs>
-                </div>
+                <div></div>
             );
         }
     }

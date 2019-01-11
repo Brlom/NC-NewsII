@@ -11,9 +11,11 @@ class Article extends Component {
         comments: [],
         currentVotes: 0,
         openButton: false,
+        commentOrderDirection: "desc",
+        commentSortBy: "created_at",
     }
     render() {
-        const { article, currentVotes, comments, openButton } = this.state;
+        const { article, currentVotes, comments, openButton, commentOrderDirection, commentSortBy } = this.state;
         if (article.topic) {
             return (
                 <div className="articleRender">
@@ -27,40 +29,28 @@ class Article extends Component {
                     <p>{article.body}</p>
                     <hr />
                     <div className="articleBottomContainer"></div>
-                    {openButton ?
+                    {openButton || this.state.comments.length < 1 ?
                         <div>
-                            <CommentForm user={this.props.user} comments={comments} commentAdded={this.commentAdded} openButton={openButton} />
-                            {comments.map(comment => {
-                                return (
-                                    <Comment key={comment.comment_id} path={`/articles/${article.article_id}/comments`} comment={comment} article={article} user={this.props.user} openButton={openButton} />
-                                );
-                            })}
+                            <CommentForm article={article.article_id} user={this.props.user} comments={comments} commentAdded={this.commentAdded} commentOrderingChanged={this.commentOrderingChanged} commentOrderDirection={commentOrderDirection} commentSortBy={commentSortBy} commentDirectionChanged={this.commentDirectionChanged} />
+                            {
+                                comments.map(comment => {
+                                    return (
+                                        <Comment key={comment.comment_id} path={`/articles/${article.article_id}/comments`} comment={comment} article={article} user={this.props.user} commentDeleted={this.commentDeleted} />
+                                    );
+                                })
+                            }
                         </div>
-                        : <button type="submit" onClick={() => this.handleOpenButton}>Load Comments</button>
+                        : <button type="submit" onClick={this.handleOpenButton}>Load Comments</button>
                     }
-                    {/* if (openButton) {
-                        return (
-                            <CommentsForm user={this.props.user} comments={comments} commentAdded={this.commentAdded} openButton={openButton} />
-                        {comments.map(comment => {
-                            return (
-                                <Comments key={comment.comment_id} path={`/articles/${article.article_id}/comments`} comment={comment} article={article} user={this.props.user} openButton={openButton} />
-                            );
-                        })}
-                        )
-                    } else {
-            return (
-                <button type="submit" onClick={() => this.handleOpenButton}>Load Comments</button>
-                        );
-                    } */}
                 </div>
             );
         }
         return (
             <div>
                 <h1>{article.title}</h1>
-                <button className="voteButton upVote" onClick={this.handleUpVote(() => article.article_id)} disabled={currentVotes === 1} >⬆</button>
+                <button className="voteButton upVote" onClick={() => this.handleUpVote(article.article_id)} disabled={currentVotes === 1} >⬆</button>
                 <span className="voteCount">0{article.votes}</span>
-                <button className="voteButton downVote" onClick={this.handleDownVote(() => article.article_id)} disabled={currentVotes === -1} >⬇</button>
+                <button className="voteButton downVote" onClick={() => this.handleDownVote(article.article_id)} disabled={currentVotes === -1} >⬇</button>
                 <Link to={`/users/${article.author}`}>{article.author}</Link>
                 {" | "}
                 {moment(article.created_at).fromNow()}
@@ -72,15 +62,50 @@ class Article extends Component {
     }
 
     commentAdded = (comment) => {
-        comment.author = this.props.user.username;
         const joined = [comment].concat(this.state.comments);
-        this.setState({ comments: joined })
+        this.setState({
+            comments: joined
+        })
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.commentOrderDirection !== this.state.commentOrderDirection || prevState.commentSortBy !== this.state.commentSortBy) {
+            const { article_id } = this.props;
+            let query = `sort_by=${this.state.commentSortBy}`;
+            query += this.state.commentOrderDirection === "desc" ? "" : "&sort_ascending=true"
+            api.getCommentsByArticleId(article_id, query).then((comments) => {
+                this.setState({
+                    comments: comments
+                })
+            })
+        }
+    }
+
+    commentOrderingChanged = (sort_by) => {
+        this.setState({
+            commentSortBy: sort_by
+        });
+    }
+
+    commentDirectionChanged = (orderingDirection) => {
+        this.setState({
+            commentOrderDirection: orderingDirection
+        })
+    }
+
+    commentDeleted = (deletedComment) => {
+        let newComments = [].concat(this.state.comments);
+        const index = newComments.findIndex((comment) => comment.comment_id === deletedComment.comment_id);
+        newComments.splice(index, 1);
+        this.setState({
+            comments: newComments
+        })
     }
 
     handleOpenButton = (event) => {
         event.preventDefault();
         this.setState({
-            buttonOpen: true
+            openButton: true
         })
     }
 
