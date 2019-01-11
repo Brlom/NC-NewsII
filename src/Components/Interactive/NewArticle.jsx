@@ -24,9 +24,9 @@ class NewArticle extends Component {
                     <fieldset>
                         <legend >New Article</legend>
                         Title:
-                <input className="newArticleInput" name="titleValue" placeholder="Article Title .." type="text" value={this.state.titleValue} onChange={this.handleChange}></input> <br />
+                    <input className="newArticleInput" name="titleValue" placeholder="Article Title .." type="text" value={this.state.titleValue} onChange={this.handleChange}></input> <br />
                         Article:
-                <textarea className="newArticleInput" name="articleBody" placeholder=" Article Text .." value={this.state.articleBody} onChange={this.handleChange} ></textarea> <br />
+                    <textarea className="newArticleInput" name="articleBody" placeholder=" Article Text .." value={this.state.articleBody} onChange={this.handleChange} ></textarea> <br />
                     </fieldset>
                     <button className="submitButtonNewArticle" type="submit" value="submit" >Publish</button>
                 </form >
@@ -34,6 +34,7 @@ class NewArticle extends Component {
             </main >
         );
     }
+
 
     handleChange = (event) => {
         const target = event.target;

@@ -23,7 +23,7 @@ class App extends Component {
   }
 
   render() {
-    const { user, loginSeen, searchArticleResults } = this.state;
+    const { user, loginSeen, searchArticleResults, articles } = this.state;
     return (
       <div className="App">
         <Auth setUser={this.setUser} user={user}>
@@ -33,7 +33,7 @@ class App extends Component {
             <Home path="/home" setLoginSeen={this.setLoginSeen} loginSeen={loginSeen} user={user} />
             <Topics path="/topics" />
             <Article path="/articles/:article_id" user={user} />
-            <Users path="/users" />
+            <Users path="/users" articles={articles} />
             <User path="/users/:username" />
             <ArticleResults path="/result" articles={searchArticleResults} />
           </Router>

@@ -40,7 +40,7 @@ Britannia Lomax
 - When logging in, the 'Home' component should be the default screen. Right now, it will go to the last page open when closing the session.
 - On 'Topics' - I would like to implement queries so the user can sort the articles for each topic. 
 - When a new comment has been added, it takes you back to the 'load comments' button but should re-render the comments including the new comment. 
-- There are a few places where the wrong thing is rendering: on Search results - it is showing results for 'undefined', on User - the number of articles have been hardcoded. 
+- There are a few places where the wrong thing is rendering: on Search results - it is showing results for 'undefined'.
 - Create a tab for "all articles" on 'Topics', as well as an add tab which will redirect the user to 'New Article' form.
 - Add either a waiting ajax, or something similar, as a lot of the pages are currently taking a while to render.
 - Add testing both with jest, and cypress. 
