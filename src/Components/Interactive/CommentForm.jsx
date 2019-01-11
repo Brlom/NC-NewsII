@@ -11,7 +11,7 @@ class CommentForm extends Component {
         const { user, comments } = this.props;
         return (
             <main>
-                <span>{comments.length} Comments </span>
+                <span>{comments.length} Comment(s) </span>
                 <label className="commentsSort">Sort by</label>
                 <select value={this.state.orderingValue} onChange={this.handleOrderChange}>
                     <option value="author">Author</option>
@@ -22,9 +22,8 @@ class CommentForm extends Component {
                     <option value="asc">Sort Ascending</option>
                     <option value="desc">Sort Descending</option>
                 </select>
-                <hr className="commentsHR"></hr>
                 <form onSubmit={this.handleComment}>
-                    <img src={user.avatar_url} alt="Avatar for logged in user" height="50px"></img>
+                    <img src={user.avatar_url} alt="Avatar for logged in user" height="30px"></img>
                     <input type="text" placeholder="leave a comment .." value={this.state.commentBody} onChange={this.handleInput}></input>
                     <button type="submit"> Submit >> </button>
                 </form>

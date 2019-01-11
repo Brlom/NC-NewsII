@@ -45,7 +45,6 @@ class NewArticle extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const { topicValue, articleBody, titleValue } = this.state;
-        // TODO: this is probable wrong - a new one is supposed to be created when posting new article!! 
         const { user: { user_id } } = this.props;
         api.submitArticle(topicValue, articleBody, titleValue, user_id).then(article => {
             if (!article) {

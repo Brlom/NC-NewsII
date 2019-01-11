@@ -16,14 +16,13 @@ class User extends Component {
                 </div>
                 <h2>Username: {user.username}</h2>
                 <h2>Name: {user.name}</h2>
-                <h2># Of Articles: </h2>
+                <h2>Articles: 3</h2>
             </div>
         );
     }
 
     componentDidMount() {
         this.fetchUser();
-        // this.fetchUserArticles();
     }
 
     fetchUser() {
@@ -34,16 +33,6 @@ class User extends Component {
             });
         });
     }
-
-    // fetchUserArticles() {
-    //     const { user: { username } } = this.state;
-    //     api.getArticlesByAuthor(username).then(articles => {
-    //         // console.log(articles)
-    //         this.setState({
-    //             articles
-    //         })
-    //     })
-    // }
 
 }
 
