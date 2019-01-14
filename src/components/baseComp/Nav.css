@@ -1,5 +1,84 @@
-.nav > li {
-  flex:1;
+.topNav {
+  overflow: hidden;
+}
+
+.topNav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.active {
+  border-bottom: red;
+}
+
+.topNav .icon {
+  display: none;
+}
+
+.dropdown1 {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown1 .dropbtn {
+  font-size: 17px;
+  border: none;
+  outline: none;
+  color: black;
+  padding: 14px 16px;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown {
+  float: right;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 17px;
+  border: none;
+  outline: none;
+  color: black;
+  padding: 14px 16px;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropDownContent {
+  /* display: none; */
+  position: absolute;
+  min-width: 160px;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropDownContent a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropDownContent .logoutSubmit {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 .navLogo {
@@ -9,67 +88,8 @@
     width: 75px;
     height: 50px;
   }
-  
-  .nav {
-    list-style: none;
-    text-align: center;
-    font-size: 20px;
-  }
-   
-  ul li {
-    display: inline;
-    text-align: center;
-    border-bottom: 3;
-  } 
-  
-  .nav a {
-    display: inline-block;
-    width: 10%;
-    padding: .75rem 0;
-    margin: 0;
-    text-decoration: none;
-    color: #000000;
-  }
-
-  .searchNavButton {
-    font-size: 100%;
-    font-family: inherit;
-    border: 0;
-    padding: 0;
-    background-color: none;
-  }
-
-  .userNavButton {
-    font-size: 100%;
-    font-family: inherit;
-    border: 0;
-    padding: 0;
-    background-color: none;
-  } 
 
   .navHR {
     border: 2px solid #ff5050;
     width: 100%;
-  }
-
-  @media all and (max-width: 600px) {
-  
-    .container {
-      flex-wrap: wrap;
-    }
-    
-    .container > li {
-      display: inline;
-      text-align: center;
-      flex-basis: 50%;
-    }
-  }
-
-  @media all and (max-width: 400px) {
-    .container > li {
-      flex-basis: 100%;
-    }
-    .search {
-      order: 1;
-    }
   }

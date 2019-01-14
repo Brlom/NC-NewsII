@@ -14,26 +14,30 @@ class Search extends Component {
 
     render() {
         return (
-            <React.Fragment>
-                <button className="searchNavButton" onClick={this.showMenu}>Search<FontAwesomeIcon icon={faAngleDown} /></button>
+            <div>
+                <button className="dropbtn" onClick={this.showMenu} >Search
+                  <FontAwesomeIcon icon={faAngleDown} />
+                </button>
                 {
                     this.state.showMenu
                         ? (
-                            <form className="searchInput" onSubmit={this.handleSubmit}>
-                                <input
-                                    placeholder="Search for..."
-                                    ref={input => this.search = input}
-                                    onChange={this.handleInputChange}
-                                    name="query"
-                                />
-                                <button className="searchDropdown" type="submit"><FontAwesomeIcon icon={faSearch} /></button>
-                            </form>
+                            <div className="dropDownContent">
+                                <form className="searchInput" onSubmit={this.handleSubmit}>
+                                    <input
+                                        placeholder="Search for..."
+                                        ref={input => this.search = input}
+                                        onChange={this.handleInputChange}
+                                        name="query"
+                                    />
+                                    <button className="searchDropdown" type="submit"><FontAwesomeIcon icon={faSearch} /></button>
+                                </form>
+                            </div>
                         )
                         : (
-                            null
+                            ""
                         )
                 }
-            </React.Fragment>
+            </div>
         )
     }
 

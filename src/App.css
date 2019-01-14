@@ -43,7 +43,7 @@ ul {
 /*image on Login*/
 .userSelectImg {
   display: inline;
-  padding-right: 15px;
+  margin: 15px;
 }
 
 .userSelectImg:hover {
@@ -53,8 +53,6 @@ ul {
 /*Selected user on Login*/
 .selectedUser {
   border: #ff505090 solid 3px;
-  padding-top: 15px;
-  padding-bottom: 15px;
 }
 
 .userAvatar {
