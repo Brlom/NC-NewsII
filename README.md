@@ -31,5 +31,4 @@ Britannia Lomax
 
 ### Acknowledgements
 - [Joshtronic](https://alligator.io/react/tabs-component/) for supplying the tabs & tab components.
-- Paul Copley for helping sort the chaos of the search components.
 - All of the ncHelpers & tutors who helped FE2 from 07.01.19-14.01.19.
