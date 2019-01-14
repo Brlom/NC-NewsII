@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../api';
-import ArticleSummary from '../Components/Base-comp/ArticleSummary';
-import Tabs from '../Components/Tabs';
+import ArticleSummary from '../components/baseComp/ArticleSummary';
+import Tabs from '../components/Tabs';
 
 class Topics extends Component {
     state = {

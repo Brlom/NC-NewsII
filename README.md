@@ -10,7 +10,7 @@ The Back End repository can be accessed at https://github.com/Brlom/my-nc-knews.
 ### Getting Started
 
 1. Fork and Clone this repository.
-2. Once cloned to your machine, run `npm install` in your terminal to install all dependencies.
+2. Once cloned to your machine, cd into the containing file and run `npm install` in your terminal to install all dependencies.
 3. Run `npm run start` to start the node server on your local environment. 
 
 ### Deployment

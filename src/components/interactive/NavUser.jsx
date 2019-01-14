@@ -33,7 +33,6 @@ class NavUser extends Component {
     }
 
     showMenu = (event) => {
-        event.preventDefault();
         this.setState({
             showMenu: true
         });

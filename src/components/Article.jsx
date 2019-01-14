@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Comment from './Comment';
-import CommentForm from './Interactive/CommentForm';
+import CommentForm from './interactive/CommentForm';
 import * as api from '../api';
 import { Link } from '@reach/router';
 import moment from 'moment';
@@ -118,7 +118,6 @@ class Article extends Component {
     }
 
     handleOpenButton = (event) => {
-        event.preventDefault();
         this.setState({
             openButton: true
         })
