@@ -49,7 +49,7 @@ class NewArticle extends Component {
         const { user: { user_id } } = this.props;
         api.submitArticle(topicValue, articleBody, titleValue, user_id).then(article => {
             if (!article) {
-                navigate('/home')
+                navigate('/')
             } else {
                 navigate(`/articles/${article.article_id}`)
             }

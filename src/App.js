@@ -31,7 +31,7 @@ class App extends Component {
           <Nav user={user} handleLogout={this.handleLogout} setArticleSearchResults={this.setArticleSearchResults} /* setArticleQuery={this.setArticleQuery} */ />
           <Router>
             <NewArticle path="/topics/articles/new" user={user} />
-            <Home path="/home" setLoginSeen={this.setLoginSeen} loginSeen={loginSeen} user={user} />
+            <Home path="/" setLoginSeen={this.setLoginSeen} loginSeen={loginSeen} user={user} />
             <Topics path="/topics" />
             <Article path="/articles/:article_id" user={user} />
             <Users path="/users" articles={articles} />

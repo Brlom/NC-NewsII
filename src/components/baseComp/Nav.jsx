@@ -16,7 +16,7 @@ class Nav extends Component {
                         alt="NorthCoders News Logo"
                     >
                     </img></li>
-                    <li className="navOne"><Link to="/home">Home</Link></li>
+                    <li className="navOne"><Link to="/">Home</Link></li>
                     {" "}
                     <li className="navTwo"><Link to="/topics">Topics</Link></li>
                     {" "}
