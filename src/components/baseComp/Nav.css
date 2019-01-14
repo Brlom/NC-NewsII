@@ -30,6 +30,7 @@
   border: none;
   outline: none;
   color: black;
+  background: #ffffff;
   padding: 14px 16px;
   font-family: inherit;
   margin: 0;
@@ -45,6 +46,7 @@
   border: none;
   outline: none;
   color: black;
+  background: #ffffff;
   padding: 14px 16px;
   font-family: inherit;
   margin: 0;
@@ -92,4 +94,21 @@
   .navHR {
     border: 2px solid #ff5050;
     width: 100%;
+  }
+
+  /* TODO: title and textarea still not totally aligned */
+  .articleFieldset {
+    display: block;
+  }
+
+  .newArticleInput {
+    width: 250px;
+    border-radius: 8px;
+  }
+
+  .newArticleTextarea {
+    height: 75px;
+    width: 250px;
+    resize: none;
+    border-radius: 8px;
   }

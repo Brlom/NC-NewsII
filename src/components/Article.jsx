@@ -55,7 +55,7 @@ class Article extends Component {
                                 })
                             }
                         </div>
-                        : <button type="submit" onClick={this.handleOpenButton}>Load Comments</button>
+                        : <button type="submit" className="loadCommentsButton" onClick={this.handleOpenButton}>Load Comments</button>
                     }
                 </div>
             );

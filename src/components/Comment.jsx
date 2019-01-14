@@ -27,7 +27,7 @@ class Comment extends Component {
                         {moment(comment.created_at).fromNow()}
                         {" | "}
                         {comment.author === this.props.user.username ?
-                            <button onClick={this.handleDelete}>Delete</button>
+                            <button className="deleteCommentButton" onClick={this.handleDelete}>Delete</button>
                             : ""
                         }
                         <hr></hr>

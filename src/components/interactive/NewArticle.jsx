@@ -21,12 +21,12 @@ class NewArticle extends Component {
                         <option value="football">Football</option>
                         <option value="cooking">Cooking</option>
                     </select>
-                    <fieldset>
+                    <fieldset className="articleFieldset">
                         <legend >New Article</legend>
                         Title:
-                    <input className="newArticleInput" name="titleValue" placeholder="Article Title .." type="text" value={this.state.titleValue} onChange={this.handleChange}></input> <br />
+                    <input className="newArticleInput" name="titleValue" placeholder="Article Title .." type="text" maxLength="40" value={this.state.titleValue} onChange={this.handleChange}></input> <br />
                         Article:
-                    <textarea className="newArticleInput" name="articleBody" placeholder=" Article Text .." value={this.state.articleBody} onChange={this.handleChange} ></textarea> <br />
+                    <textarea className="newArticleTextarea" name="articleBody" placeholder=" Article Text .." value={this.state.articleBody} onChange={this.handleChange} ></textarea> <br />
                     </fieldset>
                     <button className="submitButtonNewArticle" type="submit" value="submit" >Publish</button>
                 </form >
