@@ -1,7 +1,7 @@
-# Front-end Project NC-Knews
+# Front End Project NC-Knews
 
-## **my-nc-knewsii**
-NC-news is a news app created for northCoders bootcamp. It is written in node.js using a library called 'React'. It keeps track of topics, articles, users and comments. An [online](https://my-nc-newsii.netlify.com) example of this application.
+## **My-NC-KnewsII**
+NC-Knews is a news app created for northCoders boot camp. It is written in node.js using a library called 'React'. It keeps track of topics, articles, users and comments. An [online](https://my-nc-newsii.netlify.com) example of this application.
 
 ## REPO
 
