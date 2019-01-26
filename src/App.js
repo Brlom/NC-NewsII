@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import { Router } from '@reach/router';
 import './App.css';
 import * as api from './api';
-import Auth from './Components/Base-comp/Auth';
-import Nav from './Components/Base-comp/Nav';
-import NewArticle from './Components/Interactive/NewArticle';
-import Home from './Components/Home';
-import Topics from './Components/Topics';
-import Article from './Components/Article';
-import Users from './Components/Users';
-import User from './Components/User';
-import ArticleResults from './Components/Article-search/ArticleResults';
-import FilteredArticles from './Utils/filteredArticles';
-import Footer from './Components/Base-comp/Footer';
+import Auth from './components/baseComp/Auth';
+import Nav from './components/baseComp/Nav';
+import NewArticle from './components/interactive/NewArticle';
+import Home from './components/Home';
+import Topics from './components/Topics';
+import Article from './components/Article';
+import Users from './components/Users';
+import User from './components/User';
+import ArticleResults from './components/articleSearchComp/ArticleResults';
+import filteredArticles from './utils/filteredArticles';
+import Footer from './components/baseComp/Footer';
 
 class App extends Component {
   state = {
@@ -20,22 +20,23 @@ class App extends Component {
     loginSeen: false,
     articles: [],
     searchArticleResults: [],
+    // query: "",
   }
 
   render() {
-    const { user, loginSeen, searchArticleResults } = this.state;
+    const { user, loginSeen, searchArticleResults, articles /* query */ } = this.state;
     return (
       <div className="App">
         <Auth setUser={this.setUser} user={user}>
-          <Nav user={user} handleLogout={this.handleLogout} setArticleSearchResults={this.setArticleSearchResults} />
+          <Nav user={user} handleLogout={this.handleLogout} setArticleSearchResults={this.setArticleSearchResults} /* setArticleQuery={this.setArticleQuery} */ />
           <Router>
             <NewArticle path="/topics/articles/new" user={user} />
-            <Home path="/home" setLoginSeen={this.setLoginSeen} loginSeen={loginSeen} user={user} />
+            <Home path="/" setLoginSeen={this.setLoginSeen} loginSeen={loginSeen} user={user} />
             <Topics path="/topics" />
             <Article path="/articles/:article_id" user={user} />
-            <Users path="/users" />
+            <Users path="/users" articles={articles} />
             <User path="/users/:username" />
-            <ArticleResults path="/result" articles={searchArticleResults} />
+            <ArticleResults path="/result" articles={searchArticleResults} /* query={query} */ />
           </Router>
           <Footer />
         </Auth>
@@ -61,6 +62,12 @@ class App extends Component {
     })
   }
 
+  // setArticleQuery = (query) => {
+  //   this.setState({
+  //     query: query
+  //   })
+  // }
+
   componentDidMount() {
     const storageUser = sessionStorage.getItem("user");
     this.fetchAllArticles();
@@ -81,7 +88,7 @@ class App extends Component {
 
   handleInputChange = (event) => {
     this.setState({
-      filteredArticles: FilteredArticles(event.target.value, 20)
+      filteredArticles: filteredArticles(event.target.value, 20)
     });
   }
 

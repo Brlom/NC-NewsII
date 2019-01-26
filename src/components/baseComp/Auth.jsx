@@ -1,6 +1,6 @@
 import React from 'react';
-import Login from '../Interactive/Login';
-import Footer from '../Base-comp/Footer';
+import Login from '../interactive/Login';
+import Footer from '../baseComp/Footer';
 
 const Auth = (props) => {
     if (props.user) {

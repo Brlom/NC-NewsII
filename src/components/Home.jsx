@@ -9,14 +9,9 @@ class Home extends Component {
         hideWelcomeScreen: false,
     }
     render() {
-        const { hideWelcomeScreen, articles } = this.state;
-        if (!hideWelcomeScreen) {
-            return (
-                <div className={"welcomeScreen " + (this.props.loginSeen ? "disabled" : "enabled")}>
-                    <h1>Welcome Back {this.props.user.name}</h1>
-                </div>
-            );
-        } else {
+        const { articles } = this.state;
+        const { loginSeen } = this.props;
+        if (loginSeen) {
             return (
                 <div className="userArticleContainer">
                     <h2>My Articles</h2>
@@ -40,6 +35,12 @@ class Home extends Component {
                     <div className="userArticleBottomContainer"></div>
                 </div>
             )
+        } else {
+            return (
+                <div className={"welcomeScreen " + (this.props.loginSeen ? "disabled" : "enabled")}>
+                    <h1>Welcome Back {this.props.user.name}</h1>
+                </div>
+            );
         }
     }
 

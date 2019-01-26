@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as api from '../api';
+import { Link } from '@reach/router';
 
 class Users extends Component {
     state = {
@@ -15,7 +16,7 @@ class Users extends Component {
                         <div key={user.user_id}>
                             <li>
                                 <img src={user.avatar_url} alt="user avatar" height="50" width="50"></img>
-                                {user.username}
+                                <Link to={`/users/${user.username}`}>{user.username}</Link>
                                 <br />
                                 {user.name}
                             </li>

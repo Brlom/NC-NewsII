@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import * as api from '../../api';
 import { Link } from '@reach/router';
-import Icon from '../../Images/icon.png';
+import Icon from '../../images/icon.png';
 
 class ArticleSummary extends Component {
     state = {

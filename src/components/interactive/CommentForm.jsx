@@ -13,19 +13,19 @@ class CommentForm extends Component {
             <main>
                 <span>{comments.length} Comment(s) </span>
                 <label className="commentsSort">Sort by</label>
-                <select value={this.state.orderingValue} onChange={this.handleOrderChange}>
+                <select value={this.state.orderingValue} className="commentValueSelect" onChange={this.handleOrderChange}>
                     <option value="author">Author</option>
                     <option value="votes">Votes</option>
                     <option value="created_at">Date</option>
                 </select>
-                <select value={this.state.orderDirection} onChange={this.handleOrderDirectionChange} >
+                <select value={this.state.orderDirection} className="commentValueSelect" onChange={this.handleOrderDirectionChange} >
                     <option value="asc">Sort Ascending</option>
                     <option value="desc">Sort Descending</option>
                 </select>
                 <form onSubmit={this.handleComment}>
                     <img src={user.avatar_url} alt="Avatar for logged in user" height="30px"></img>
-                    <input type="text" placeholder="leave a comment .." value={this.state.commentBody} onChange={this.handleInput}></input>
-                    <button type="submit"> Submit >> </button>
+                    <textarea type="text" className="commentTextarea" placeholder="leave a comment .." value={this.state.commentBody} onChange={this.handleInput} ></textarea>
+                    <button type="submit" className="commentSubmitButton"> Submit >> </button>
                 </form>
                 <hr className="commentsHR"></hr>
             </main>

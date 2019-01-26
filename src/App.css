@@ -43,7 +43,7 @@ ul {
 /*image on Login*/
 .userSelectImg {
   display: inline;
-  padding-right: 15px;
+  margin: 15px;
 }
 
 .userSelectImg:hover {
@@ -53,8 +53,6 @@ ul {
 /*Selected user on Login*/
 .selectedUser {
   border: #ff505090 solid 3px;
-  padding-top: 15px;
-  padding-bottom: 15px;
 }
 
 .userAvatar {
@@ -124,6 +122,18 @@ ul {
   width: 75%;
 }
 
+.deleteButton {
+  background: #ffffff;
+  border: #ff5050 solid 0.5px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease-in;
+}
+
+.deleteButton:hover {
+  background: #ff505040;
+  transition: background-color 0.25s ease-out;
+}
+
 /*User component*/
 
 .userBottomContainer {
@@ -135,21 +145,22 @@ ul {
 
 /*Tabs component*/
 .tab-list {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ff5050;
   padding-left: 0;
 }
 
 .tab-list-item {
   display: inline-block;
   list-style: none;
+  border-radius: 5px;
   margin-bottom: -1px;
   padding: 0.5rem 0.75rem;
 }
 
 .tab-list-active {
   background-color: white;
-  border: solid #ccc;
-  border-width: 1px 1px 0 1px;
+  border: solid #ff5050;
+  border-width: 3px 3px 0 3px;
 }
 
 /* Topics component*/
@@ -205,8 +216,63 @@ ul {
   margin-top: 10px; 
 }
 
+.loadCommentsButton {
+  background: #ffffff;
+  border: #ff5050 solid 2px; 
+  border-radius: 10%;
+  transition: background-color 0.3s ease-in;
+  padding: 5px;
+  margin-left: 3px;
+}
+
+.loadCommentsButton:hover {
+  background: #ff505060;
+  transition: background-color 0.25s ease-out;  
+}
+
 .commentsSort {
   margin-left: 475px;
+}
+
+.commentValueSelect {
+  background: #ffffff;
+  border: #ff5050 solid 0.5px;
+  border-radius: 8px;
+  margin: 1px;
+}
+
+.commentTextarea {
+  height: 75px;
+  width: 250px;
+  resize: none;
+  border-radius: 8px;
+}
+
+.commentSubmitButton {
+  background: #ffffff;
+  border: #ff5050 solid 2px; 
+  border-radius: 10%;
+  transition: background-color 0.3s ease-in;
+  padding: 5px;
+  margin-left: 3px;
+}
+
+.commentSubmitButton:hover {
+  background: #ff505060;
+  transition: background-color 0.25s ease-out;
+}
+
+.deleteCommentButton {
+  background: #ffffff;
+  border: #ff5050 solid 2px; 
+  border-radius: 8px;
+  transition: background-color 0.3s ease-in;
+  padding: 2px;
+}
+
+.deleteCommentButton:hover {
+  background: #ff505060;
+  transition: background-color 0.25s ease-out;
 }
 
 /* NewArticle Component */
@@ -240,6 +306,7 @@ ul {
   border: #ff5050 solid 2px;
   border-radius: 10%;
   transition: background-color 0.3s ease-in;
+  margin-top: 5px;
   padding: 10px;
   font-family: sans-serif;
 }
@@ -252,4 +319,17 @@ ul {
 .textBreakNewArticle {
   border-bottom: 16px dotted #00000010;
   width: 75%;
+}
+
+/* Footer Component */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(175deg, #ffffff, 40%, #ff505060);
 }

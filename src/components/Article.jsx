@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Comment from './Comment';
-import CommentForm from './Interactive/CommentForm';
+import CommentForm from './interactive/CommentForm';
 import * as api from '../api';
 import { Link } from '@reach/router';
 import moment from 'moment';
@@ -31,16 +31,31 @@ class Article extends Component {
                     <div className="articleBottomContainer"></div>
                     {openButton || this.state.comments.length < 1 ?
                         <div>
-                            <CommentForm article={article.article_id} user={this.props.user} comments={comments} commentAdded={this.commentAdded} commentOrderingChanged={this.commentOrderingChanged} commentOrderDirection={commentOrderDirection} commentSortBy={commentSortBy} commentDirectionChanged={this.commentDirectionChanged} />
+                            <CommentForm
+                                article={article.article_id}
+                                user={this.props.user}
+                                comments={comments}
+                                commentAdded={this.commentAdded}
+                                commentOrderingChanged={this.commentOrderingChanged}
+                                commentOrderDirection={commentOrderDirection}
+                                commentSortBy={commentSortBy}
+                                commentDirectionChanged={this.commentDirectionChanged}
+                            />
                             {
                                 comments.map(comment => {
                                     return (
-                                        <Comment key={comment.comment_id} path={`/articles/${article.article_id}/comments`} comment={comment} article={article} user={this.props.user} commentDeleted={this.commentDeleted} />
+                                        <Comment
+                                            key={comment.comment_id}
+                                            path={`/articles/${article.article_id}/comments`}
+                                            comment={comment}
+                                            article={article}
+                                            user={this.props.user}
+                                            commentDeleted={this.commentDeleted} />
                                     );
                                 })
                             }
                         </div>
-                        : <button type="submit" onClick={this.handleOpenButton}>Load Comments</button>
+                        : <button type="submit" className="loadCommentsButton" onClick={this.handleOpenButton}>Load Comments</button>
                     }
                 </div>
             );
@@ -103,7 +118,6 @@ class Article extends Component {
     }
 
     handleOpenButton = (event) => {
-        event.preventDefault();
         this.setState({
             openButton: true
         })
