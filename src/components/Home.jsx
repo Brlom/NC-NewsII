@@ -6,11 +6,11 @@ import { Link } from '@reach/router';
 class Home extends Component {
     state = {
         articles: [],
+        loginSeen: false,
         hideWelcomeScreen: false,
     }
     render() {
-        const { articles } = this.state;
-        const { loginSeen } = this.props;
+        const { articles, loginSeen } = this.state;
         if (loginSeen) {
             return (
                 <div className="userArticleContainer">
@@ -44,12 +44,12 @@ class Home extends Component {
         }
     }
 
-    hideWelcomeScreen = () => {
-        this.props.setLoginSeen()
+    hideWelcomeScreen = (waitTime) => {
         // this timeout should be the same as the transition speed in the css. 
         setTimeout(() => {
-            this.setState({ hideWelcomeScreen: true })
-        }, 500)
+            this.setState({ hideWelcomeScreen: true, loginSeen: true });
+            sessionStorage.setItem("loginSeen", JSON.stringify(true));
+        }, waitTime)
     }
 
     handleDelete = (article_id) => {
@@ -59,9 +59,14 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        setTimeout(() => {
-            this.hideWelcomeScreen()
-        }, 2000)
+        const isLoginSeen = sessionStorage.getItem("loginSeen");
+        if (isLoginSeen !== "true") {
+            setTimeout(() => {
+                this.hideWelcomeScreen(500)
+            }, 2000)
+        } else {
+            this.hideWelcomeScreen(0)
+        }
         this.fetchArticlesByAuthor();
     }
 

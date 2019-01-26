@@ -77,6 +77,7 @@ class Article extends Component {
     }
 
     commentAdded = (comment) => {
+        console.log(comment);
         const joined = [comment].concat(this.state.comments);
         this.setState({
             comments: joined
@@ -124,19 +125,17 @@ class Article extends Component {
     }
 
     handleUpVote = (article_id) => {
-        api.voteArticle(article_id, 1).then(() => {
-            const newArticle = this.state.article;
-            newArticle.votes += 1;
-            this.setState({ article: newArticle, currentVotes: this.state.currentVotes + 1 })
-        })
+        api.voteArticle(article_id, 1)
+        const newArticle = this.state.article;
+        newArticle.votes += 1;
+        this.setState({ article: newArticle, currentVotes: this.state.currentVotes + 1 })
     }
 
     handleDownVote = (article_id) => {
-        api.voteArticle(article_id, -1).then(() => {
-            const newArticle = this.state.article;
-            newArticle.votes += -1;
-            this.setState({ article: newArticle, currentVotes: this.state.currentVotes - 1 })
-        })
+        api.voteArticle(article_id, -1)
+        const newArticle = this.state.article;
+        newArticle.votes += -1;
+        this.setState({ article: newArticle, currentVotes: this.state.currentVotes - 1 })
     }
 
     componentDidMount() {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../../api';
 import { navigate } from '@reach/router';
+import { notify } from 'react-notify-toast';
 
 class NewArticle extends Component {
     state = {
@@ -16,7 +17,7 @@ class NewArticle extends Component {
                 <form className="newArticleForm" onSubmit={this.handleSubmit}>
                     <label>Select topic: </label>
                     <select className="topicSelectorNewArticle" name="topicValue" value={this.state.topicValue} onChange={this.handleChange}>
-                        <option value="topics">Topics</option>
+                        <option value="">---</option>
                         <option value="coding">Coding</option>
                         <option value="football">Football</option>
                         <option value="cooking">Cooking</option>
@@ -47,6 +48,16 @@ class NewArticle extends Component {
         event.preventDefault();
         const { topicValue, articleBody, titleValue } = this.state;
         const { user: { user_id } } = this.props;
+        if (!titleValue) {
+            notify.show('New Article must have a title!', 'error');
+            return
+        } else if (!articleBody) {
+            notify.show('New Article must have a body!', 'error');
+            return
+        } else if (!topicValue) {
+            notify.show('New Article must have a topic!', 'error');
+            return
+        }
         api.submitArticle(topicValue, articleBody, titleValue, user_id).then(article => {
             if (!article) {
                 navigate('/')

@@ -38,19 +38,17 @@ class Comment extends Component {
     }
 
     handleUpVote = (article_id, comment_id) => {
-        api.voteComment(article_id, comment_id, 1).then(() => {
-            const newComment = this.state.comment;
-            newComment.votes += 1;
-            this.setState({ comments: newComment, currentVotes: this.state.currentVotes + 1 })
-        })
+        api.voteComment(article_id, comment_id, 1)
+        const newComment = this.state.comment;
+        newComment.votes += 1;
+        this.setState({ comments: newComment, currentVotes: this.state.currentVotes + 1 })
     }
 
     handleDownVote = (article_id, comment_id) => {
-        api.voteComment(article_id, comment_id, - 1).then(() => {
-            const newComment = this.state.comment;
-            newComment.votes += -1;
-            this.setState({ comments: newComment, currentVotes: this.state.currentVotes - 1 })
-        })
+        api.voteComment(article_id, comment_id, - 1);
+        const newComment = this.state.comment;
+        newComment.votes += -1;
+        this.setState({ comments: newComment, currentVotes: this.state.currentVotes - 1 })
     }
 
     handleDelete = () => {

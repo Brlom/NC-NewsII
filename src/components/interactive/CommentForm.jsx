@@ -35,7 +35,10 @@ class CommentForm extends Component {
     handleComment = (event) => {
         event.preventDefault();
         api.submitComment(this.props.article, this.props.user.user_id, this.state.commentBody).then((comment) => {
-            this.props.commentAdded(comment)
+            comment.author = this.props.user.username;
+            comment.avatar_url = this.props.user.avatar_url;
+            this.props.commentAdded(comment);
+            this.setState({ commentBody: "" });
         })
     }
 
