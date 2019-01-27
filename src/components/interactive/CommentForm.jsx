@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as api from '../../api';
+import { notify } from 'react-notify-toast';
 
 class CommentForm extends Component {
     state = {
@@ -17,7 +18,7 @@ class CommentForm extends Component {
                     <option value="votes">Votes</option>
                     <option value="created_at">Date</option>
                 </select>
-                <select value={this.state.orderDirection} className="commentValueSelect" onChange={this.handleOrderDirectionChange} >
+                <select value={this.state.orderDirection} className="commentValueSort" onChange={this.handleOrderDirectionChange} >
                     <option value="asc">Sort Ascending</option>
                     <option value="desc">Sort Descending</option>
                 </select>
@@ -34,6 +35,10 @@ class CommentForm extends Component {
 
     handleComment = (event) => {
         event.preventDefault();
+        if (!this.state.commentBody) {
+            notify.show('New comment must have a body!', 'error');
+            return;
+        }
         api.submitComment(this.props.article, this.props.user.user_id, this.state.commentBody).then((comment) => {
             comment.author = this.props.user.username;
             comment.avatar_url = this.props.user.avatar_url;

@@ -16,6 +16,7 @@ class ArticleResults extends Component {
         );
     }
 
+
 }
 
 export default ArticleResults;

@@ -77,7 +77,7 @@ ul {
 
 /*Selected user on Login*/
 .selectedUser {
-  border: #ff505090 solid 3px;
+  outline: #ff505090 solid 3px;
 }
 
 .userAvatar {
@@ -85,8 +85,7 @@ ul {
 }
 
 .userAvatar:hover {
-  border: #ff5050 solid 3px;
-  transition: border 0.2s ease-out;
+  outline: #ff5050 solid 3px;
 }
 
 /*login button*/
@@ -219,6 +218,14 @@ ul {
   margin-top: 15px;
 }
 
+.alignVotes {
+  display: inline;
+}
+
+.alignDelete {
+  display: inline;
+}
+
 /* Article component */
 
 .articleRender > hr {
@@ -281,7 +288,16 @@ ul {
   background: #ffffff;
   border: #ff5050 solid 0.5px;
   border-radius: 8px;
+  margin: 5px;
+  width: 80px;
+}
+
+.commentValueSort {
+  background: #ffffff;
+  border: #ff5050 solid 0.5px;
+  border-radius: 8px;
   margin: 1px;
+  width: 163px; 
 }
 
 .commentInputForm {

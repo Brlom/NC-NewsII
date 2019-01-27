@@ -7,6 +7,9 @@ import MediaQuery from 'react-responsive';
 import { slide as Menu } from 'react-burger-menu'
 
 class Nav extends Component {
+    state = {
+        showMobileMenu: false,
+    }
     render() {
         return (
             <div className="topNav" id="myTopNav">
@@ -30,14 +33,16 @@ class Nav extends Component {
                     <div className="dropdown"><NavUser user={this.props.user} handleLogout={this.props.handleLogout} /></div>
                 </MediaQuery>
                 <MediaQuery query="(max-device-width: 599px)">
-                    <Menu left noOverlay>
+                    <Menu left noOverlay isOpen={this.state.showMobileMenu}>
+                        <ul>
+                            <li><a id="home" href="/" className="menu-item bm-item">Home</a></li>
+                            <li><a id="topics" href="/topics" className="menu-item bm-item">Topics</a></li>
+                            <li><a id="users" href="/users" className="menu-item bm-item">Users</a></li>
+                            <li><div className="dropdown"><NavUser user={this.props.user} handleLogout={this.props.handleLogout} /></div></li>
+                            <li><div className="dropdown1"><Search setArticleSearchResults={this.props.setArticleSearchResults} onSearch={this.onSearch} /></div></li>
+                        </ul>
 
-                        <a id="home" href="/" className="menu-item bm-item">Home</a>
-                        <a id="topics" href="/topics" className="menu-item bm-item">Topics</a>
-                        <a id="users" href="/users" className="menu-item bm-item">Users</a>
 
-                        <div className="dropdown"><NavUser user={this.props.user} handleLogout={this.props.handleLogout} /></div>
-                        <Search setArticleSearchResults={this.props.setArticleSearchResults} />
 
 
                     </Menu>
@@ -46,6 +51,10 @@ class Nav extends Component {
                 <hr className="navHR" />
             </div>
         );
+    }
+
+    onSearch = () => {
+        this.setState({ showMobileMenu: false })
     }
 }
 

@@ -13,6 +13,13 @@
   font-size: 17px;
 }
 
+@media (max-width: 599px) {
+  .topNav a {
+    text-align: left;
+    color: white;
+  }
+}
+
 .active {
   border-bottom: red;
 }
@@ -57,12 +64,26 @@
   position: absolute;
   min-width: 160px;
   background-color: white;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
+.searchInput {
+  display: inline;
+}
+
+.searchInput > button {
+   width: 30px; 
+}
+
+.searchInput > input {
+  width: 130px;
+}
 
 @media (max-width: 599px) {
+  .dropdown1 .dropbtn {
+    color: white;
+    background: none;
+  }
   .dropdown {
     float: none;
     overflow: initial;
@@ -72,6 +93,15 @@
   }
   .dropdown .dropbtn {
     background: none;
+    color: white;
+  }
+  .dropDownContent {
+    position: absolute;
+    min-width: 160px;
+    max-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    left: 20px;
+    z-index: 1;
   }
 }
 
@@ -173,11 +203,20 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-item-list {
   color: #b8b7ad;
   /* padding: 0.8em; */
+  text-align: left;
+  
 }
-
+.bm-menu a {
+  display: block;
+  width: 100%;
+}
 /* Individual item */
 .bm-item {
   display: block;
+}
+
+.bm-item:focus{
+  outline: none;
 }
 
 /* Styling of overlay */

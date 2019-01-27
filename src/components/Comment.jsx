@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import * as api from '../api';
 import moment from 'moment';
 import { Link } from '@reach/router';
+import Votes from '../components/baseComp/Votes';
 
 class Comment extends Component {
     state = {
         comment: this.props.comment,
         sortBy: "votes",
-        currentVotes: 0,
     }
 
     render() {
-        const { comment, currentVotes } = this.state;
+        const { comment } = this.state;
         const { article } = this.props;
         return (
             <main>
@@ -20,14 +20,14 @@ class Comment extends Component {
                         <img src={comment.avatar_url} alt="Avatar for comment writer" height="30px"></img>
                         <Link to={`/users/${comment.author}`}>{comment.author}</Link>
                         <li>{comment.body}</li>
-                        <button className="voteButton upVote" onClick={() => this.handleUpVote(article.article_id, comment.comment_id)} disabled={currentVotes === 1}>⬆</button>
-                        <span className="voteCount">{comment.votes}</span>
-                        <button className="voteButton downVote" onClick={() => this.handleDownVote(article.article_id, comment.comment_id)} disabled={currentVotes === -1}>⬇</button>
+                        <Votes comment={comment} article={article} elementUpdated={this.commentUpdated} />
                         {" | "}
                         {moment(comment.created_at).fromNow()}
-                        {" | "}
                         {comment.author === this.props.user.username ?
-                            <button className="deleteCommentButton" onClick={this.handleDelete}>Delete</button>
+                            <div className="alignDelete" >
+                                {" | "}
+                                <button className="deleteCommentButton" onClick={this.handleDelete}>Delete</button>
+                            </div>
                             : ""
                         }
                         <hr></hr>
@@ -37,26 +37,14 @@ class Comment extends Component {
         );
     }
 
-    handleUpVote = (article_id, comment_id) => {
-        api.voteComment(article_id, comment_id, 1)
-        const newComment = this.state.comment;
-        newComment.votes += 1;
-        this.setState({ comments: newComment, currentVotes: this.state.currentVotes + 1 })
-    }
-
-    handleDownVote = (article_id, comment_id) => {
-        api.voteComment(article_id, comment_id, - 1);
-        const newComment = this.state.comment;
-        newComment.votes += -1;
-        this.setState({ comments: newComment, currentVotes: this.state.currentVotes - 1 })
-    }
-
     handleDelete = () => {
         api.deleteComment(this.props.article.article_id, this.state.comment.comment_id).then(() => {
             this.props.commentDeleted(this.state.comment)
         })
     }
-
+    commentUpdated = comment => {
+        this.setState({ comment: comment })
+    }
 }
 
 export default Comment;

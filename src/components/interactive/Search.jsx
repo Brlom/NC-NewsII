@@ -61,6 +61,7 @@ class Search extends Component {
         this.setState({
             query: ""
         })
+        this.props.onSearch();
         navigate("/result")
     }
 

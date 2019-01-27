@@ -4,6 +4,7 @@ import CommentForm from './interactive/CommentForm';
 import * as api from '../api';
 import { Link } from '@reach/router';
 import moment from 'moment';
+import { notify } from 'react-notify-toast';
 
 class Article extends Component {
     state = {
@@ -78,7 +79,6 @@ class Article extends Component {
     }
 
     commentAdded = (comment) => {
-        console.log(comment);
         const joined = [comment].concat(this.state.comments);
         this.setState({
             comments: joined
@@ -145,11 +145,18 @@ class Article extends Component {
             this.setState({
                 article
             });
+        }).catch(() => {
+            notify.show("There was an error loading the article. Please try again")
         });
         api.getCommentsByArticleId(article_id).then(comments => {
             this.setState({
                 comments
             });
+        }).catch(error => {
+            // Ignore 404, there are no comments for this article
+            if (error.response.status !== 404) {
+                notify.show("There was an error loading the comments. Please try again")
+            }
         });
     }
 
