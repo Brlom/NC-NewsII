@@ -238,8 +238,6 @@ ul {
   margin-top: 20px;
 }
 
-
-
 .loadCommentsForArticle {
   background: #ffffff;
   border: #ff5050 solid 2px;
@@ -289,7 +287,7 @@ ul {
   border: #ff5050 solid 0.5px;
   border-radius: 8px;
   margin: 5px;
-  width: 80px;
+  width: 100px;
 }
 
 .commentValueSort {

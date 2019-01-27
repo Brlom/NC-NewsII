@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import * as api from '../api';
 import { Link } from '@reach/router';
+import ajaxLoader from '../utils/ajax-loader.gif';
 
 class Users extends Component {
     state = {
         users: [],
+        isLoading: true,
     }
     render() {
-        const { users } = this.state;
+        const { users, isLoading } = this.state;
+        if (isLoading) {
+            return (
+                <React.Fragment key="users">
+                    <img id="loading" src={ajaxLoader} alt="ajax loader circle" height="100" width="100" />
+                </React.Fragment>
+            );
+        }
         return (
             <React.Fragment>
                 <h2 className="contentHeader">Users</h2>
@@ -31,7 +40,7 @@ class Users extends Component {
     }
     componentDidMount() {
         api.getUsers().then(users => {
-            this.setState({ users });
+            this.setState({ users, isLoading: false });
         });
     }
 }

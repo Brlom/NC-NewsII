@@ -2,15 +2,24 @@ import React, { Component } from 'react';
 import * as api from '../api';
 import moment from 'moment';
 import { Link } from '@reach/router';
+import ajaxLoader from '../utils/ajax-loader.gif';
 
 class Home extends Component {
     state = {
         articles: [],
         loginSeen: false,
         hideWelcomeScreen: false,
+        isLoading: true,
     }
     render() {
-        const { articles, loginSeen } = this.state;
+        const { articles, loginSeen, isLoading } = this.state;
+        if (isLoading && loginSeen) {
+            return (
+                <React.Fragment key="home">
+                    <img id="loading" src={ajaxLoader} alt="ajax loader circle" height="100" width="100" />
+                </React.Fragment>
+            );
+        }
         if (loginSeen) {
             return (
                 <div className="userArticleContainer">
@@ -73,7 +82,7 @@ class Home extends Component {
     fetchArticlesByAuthor = () => {
         api.getArticlesByAuthor(this.props.user.username).then(articles => {
             this.setState({
-                articles: articles
+                articles: articles, isLoading: false
             })
         })
     }

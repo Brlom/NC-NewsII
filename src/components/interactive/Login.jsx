@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as api from '../../api';
+import ajaxLoader from '../../utils/ajax-loader.gif';
 
 class Login extends Component {
     state = {
@@ -7,9 +8,17 @@ class Login extends Component {
         selectedUser: "",
         selectedUserIndex: null,
         failed: false,
+        isLoading: true,
     }
     render() {
-        const { users, selectedUser } = this.state;
+        const { users, selectedUser, isLoading } = this.state;
+        if (isLoading) {
+            return (
+                <React.Fragment key="login">
+                    <img id="loading" src={ajaxLoader} alt="ajax loader circle" height="100" width="100" />
+                </React.Fragment>
+            );
+        }
         return (
             <div className="content">
 
@@ -32,9 +41,10 @@ class Login extends Component {
     }
     componentDidMount() {
         api.getUsers().then(users => {
-            this.setState({ users });
+            this.setState({ users, isLoading: false });
         });
     }
+
     onUserSelect = (event) => {
         this.setState({ selectedUser: event.currentTarget.getAttribute("value") })
     }

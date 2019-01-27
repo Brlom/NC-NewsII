@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import * as api from '../api';
+import ajaxLoader from '../utils/ajax-loader.gif';
 
 class User extends Component {
     state = {
         user: {},
         articles: [],
+        isLoading: true,
     }
 
     render() {
-        const { user, articles } = this.state;
+        const { user, articles, isLoading } = this.state;
+        if (isLoading) {
+            return (
+                <React.Fragment key="user">
+                    <img id="loading" src={ajaxLoader} alt="ajax loader circle" height="100" width="100" />
+                </React.Fragment>
+            );
+        }
         return (
             <div>
                 <div>
@@ -30,7 +39,7 @@ class User extends Component {
         const { username } = this.props;
         api.getUserByUsername(username).then(user => {
             this.setState({
-                user
+                user, isLoading: false
             });
         });
     }

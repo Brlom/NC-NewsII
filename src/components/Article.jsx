@@ -5,6 +5,7 @@ import * as api from '../api';
 import { Link } from '@reach/router';
 import moment from 'moment';
 import { notify } from 'react-notify-toast';
+import ajaxLoader from '../utils/ajax-loader.gif';
 
 class Article extends Component {
     state = {
@@ -14,9 +15,17 @@ class Article extends Component {
         openButton: false,
         commentOrderDirection: "desc",
         commentSortBy: "created_at",
+        isLoading: true,
     }
     render() {
-        const { article, currentVotes, comments, openButton, commentOrderDirection, commentSortBy } = this.state;
+        const { article, currentVotes, comments, openButton, commentOrderDirection, commentSortBy, isLoading } = this.state;
+        if (isLoading) {
+            return (
+                <React.Fragment key="article">
+                    <img id="loading" src={ajaxLoader} alt="ajax loader circle" height="100" width="100" />
+                </React.Fragment>
+            );
+        }
         if (article.topic) {
             return (
                 <div className="articleRender">
@@ -143,7 +152,7 @@ class Article extends Component {
         const { article_id } = this.props;
         api.getArticleById(article_id).then(article => {
             this.setState({
-                article
+                article, isLoading: false
             });
         }).catch(() => {
             notify.show("There was an error loading the article. Please try again")

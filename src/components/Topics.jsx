@@ -2,14 +2,23 @@ import React, { Component } from 'react';
 import * as api from '../api';
 import ArticleSummary from '../components/baseComp/ArticleSummary';
 import Tabs from '../components/Tabs';
+import ajaxLoader from '../utils/ajax-loader.gif';
 
 class Topics extends Component {
     state = {
         topics: [],
         articles: {},
+        isLoading: true,
     }
     render() {
-        const { topics, articles } = this.state;
+        const { topics, articles, isLoading } = this.state;
+        if (isLoading) {
+            return (
+                <React.Fragment key="topics">
+                    <img id="loading" src={ajaxLoader} alt="ajax loader circle" height="100" width="100" />
+                </React.Fragment>
+            );
+        }
         if (topics.length > 0) {
             return (
                 <div>
@@ -55,7 +64,7 @@ class Topics extends Component {
             topics.map((topic) => {
                 return this.fetchArticles(topic.slug)
             });
-            this.setState({ topics: topics });
+            this.setState({ topics: topics, isLoading: false });
         });
     }
 
