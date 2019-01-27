@@ -27,7 +27,7 @@ class Nav extends Component {
                     <a href="/users" className="active">Users</a>
                     {" "}
                     <div className="dropdown1">
-                        <Search setArticleSearchResults={this.props.setArticleSearchResults} />
+                        <Search setArticleSearchResults={this.props.setArticleSearchResults} onSearch={this.onSearch} />
                     </div>
                     {" "}
                     <div className="dropdown"><NavUser user={this.props.user} handleLogout={this.props.handleLogout} /></div>

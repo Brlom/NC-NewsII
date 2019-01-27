@@ -19,7 +19,6 @@ class Tabs extends Component {
         } = this;
         return (
             <div className="tabs">
-
                 <MediaQuery query="(max-device-width: 599px)">
                     <label><h4>Topic:</h4></label>
                     <select value={this.state.activeSelect} onChange={this.onSelectClicked}>
