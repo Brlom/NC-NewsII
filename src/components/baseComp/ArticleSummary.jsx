@@ -20,6 +20,8 @@ class ArticleSummary extends Component {
                 <button className="voteButton downVote" onClick={() => this.handleDownVote(article.article_id)} disabled={currentVotes === -1}>⬇</button>
                 <Link to={`/articles/${article.article_id}`}>{article.title}</Link>
                 {" | "}
+                <span className="numComments">Comments: {article.comment_count}</span>
+                {" | "}
                 <Link to={`/users/${article.author}`}>{article.name}</Link>
                 {" | "}
                 {moment(article.created_at).fromNow()}

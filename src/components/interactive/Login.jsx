@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as api from '../../api';
-import Header from '../baseComp/Header';
 
 class Login extends Component {
     state = {
@@ -13,9 +12,9 @@ class Login extends Component {
         const { users, selectedUser } = this.state;
         return (
             <div className="content">
-                <Header />
-                <div className="topContainer">
-                    <h2>Log in:</h2>
+
+                <div className="topContainer loginContainer">
+                    <h2 className="contentHeader">Log in:</h2>
                     <ul className="userSelect">{users.map((user) => {
                         return (
                             <li key={user.user_id} className="userSelectImg" onClick={this.onUserSelect} value={user.username}>

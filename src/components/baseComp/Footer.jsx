@@ -8,7 +8,7 @@ const Footer = () => {
                 src={Icon}
                 alt="NorthCoders News Icon"
                 width="34"
-                height="20"
+
             >
             </img>
             <h1 fontSize="3pt">©2019 NC Knews</h1>

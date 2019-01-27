@@ -31,7 +31,7 @@ class App extends Component {
         <Notifications />
         <Auth setUser={this.setUser} user={user}>
           <Nav user={user} handleLogout={this.handleLogout} setArticleSearchResults={this.setArticleSearchResults} /* setArticleQuery={this.setArticleQuery} */ />
-          <Router>
+          <Router className="content">
             <NewArticle path="/topics/articles/new" user={user} />
             <Home path="/" user={user} />
             <Topics path="/topics" />

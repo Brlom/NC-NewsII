@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from '../interactive/Login';
 import Footer from '../baseComp/Footer';
+import Header from '../baseComp/Header';
 
 const Auth = (props) => {
     if (props.user) {
@@ -11,10 +12,11 @@ const Auth = (props) => {
         );
     } else {
         return (
-            <div className="main">
+            <React.Fragment>
+                <Header />
                 <Login setUser={props.setUser} />
                 <Footer className="footer" />
-            </div>
+            </React.Fragment>
         )
     }
 };

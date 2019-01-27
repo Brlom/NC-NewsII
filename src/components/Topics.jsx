@@ -13,7 +13,7 @@ class Topics extends Component {
         if (topics.length > 0) {
             return (
                 <div>
-                    <h1>Article Library</h1>
+                    <h1 className="contentHeader">Article Library</h1>
                     <Tabs>
                         {topics.map((topic) => {
                             if (articles && articles[topic.slug]) {
@@ -36,6 +36,7 @@ class Topics extends Component {
                             }
                         })}
                     </Tabs>
+                    <div className="bottomContainer"></div>
                 </div>
             )
         } else {

@@ -3,6 +3,8 @@ import './Nav.css';
 import Icon from '../../images/icon.png';
 import Search from '../interactive/Search';
 import NavUser from '../interactive/NavUser';
+import MediaQuery from 'react-responsive';
+import { slide as Menu } from 'react-burger-menu'
 
 class Nav extends Component {
     render() {
@@ -14,17 +16,33 @@ class Nav extends Component {
                     alt="NorthCoders News Logo"
                 >
                 </img>
-                <a href="/" className="active">Home</a>
-                {" "}
-                <a href="/topics" className="active">Topics</a>
-                {" "}
-                <a href="/users" className="active">Users</a>
-                {" "}
-                <div className="dropdown1">
-                    <Search setArticleSearchResults={this.props.setArticleSearchResults} />
-                </div>
-                {" "}
-                <div className="dropdown"><NavUser user={this.props.user} handleLogout={this.props.handleLogout} /></div>
+                <MediaQuery query="(min-device-width: 600px)">
+                    <a href="/" className="active">Home</a>
+                    {" "}
+                    <a href="/topics" className="active">Topics</a>
+                    {" "}
+                    <a href="/users" className="active">Users</a>
+                    {" "}
+                    <div className="dropdown1">
+                        <Search setArticleSearchResults={this.props.setArticleSearchResults} />
+                    </div>
+                    {" "}
+                    <div className="dropdown"><NavUser user={this.props.user} handleLogout={this.props.handleLogout} /></div>
+                </MediaQuery>
+                <MediaQuery query="(max-device-width: 599px)">
+                    <Menu left noOverlay>
+
+                        <a id="home" href="/" className="menu-item bm-item">Home</a>
+                        <a id="topics" href="/topics" className="menu-item bm-item">Topics</a>
+                        <a id="users" href="/users" className="menu-item bm-item">Users</a>
+
+                        <div className="dropdown"><NavUser user={this.props.user} handleLogout={this.props.handleLogout} /></div>
+                        <Search setArticleSearchResults={this.props.setArticleSearchResults} />
+
+
+                    </Menu>
+                </MediaQuery>
+
                 <hr className="navHR" />
             </div>
         );

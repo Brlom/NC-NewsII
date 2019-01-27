@@ -19,7 +19,7 @@ class Article extends Component {
         if (article.topic) {
             return (
                 <div className="articleRender">
-                    <h1>{article.title}</h1>
+                    <h1 className="contentHeader">{article.title}</h1>
                     <button className="voteButton upVote" onClick={() => this.handleUpVote(article.article_id)} disabled={currentVotes === 1} >⬆</button>
                     <span className="voteCount">{article.votes}</span>
                     <button className="voteButton downVote" onClick={() => this.handleDownVote(article.article_id)} disabled={currentVotes === -1} >⬇</button>
@@ -28,9 +28,8 @@ class Article extends Component {
                     {moment(article.created_at).fromNow()}
                     <p>{article.body}</p>
                     <hr />
-                    <div className="articleBottomContainer"></div>
                     {openButton || this.state.comments.length < 1 ?
-                        <div>
+                        <div className="commentFormContainer">
                             <CommentForm
                                 article={article.article_id}
                                 user={this.props.user}
@@ -54,9 +53,11 @@ class Article extends Component {
                                     );
                                 })
                             }
+                            <div className="bottomContainer"></div>
                         </div>
-                        : <button type="submit" className="loadCommentsButton" onClick={this.handleOpenButton}>Load Comments</button>
+                        : <button type="submit" className="loadCommentsButton" onClick={this.handleOpenButton}>Load {comments.length} Comment{comments.length > 1 ? "s" : ""}</button>
                     }
+
                 </div>
             );
         }
@@ -71,7 +72,7 @@ class Article extends Component {
                 {moment(article.created_at).fromNow()}
                 <p>{article.body}</p>
                 <hr></hr>
-                <div className="articleBottomContainer"></div>
+                <div className="bottomContainer"></div>
             </div>
         )
     }

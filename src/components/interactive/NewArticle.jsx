@@ -13,25 +13,28 @@ class NewArticle extends Component {
     render() {
         return (
             <main>
-                <h1>Publish a new article: </h1>
+                <h1 className="contentHeader">Publish a new article </h1>
                 <form className="newArticleForm" onSubmit={this.handleSubmit}>
-                    <label>Select topic: </label>
-                    <select className="topicSelectorNewArticle" name="topicValue" value={this.state.topicValue} onChange={this.handleChange}>
-                        <option value="">---</option>
-                        <option value="coding">Coding</option>
-                        <option value="football">Football</option>
-                        <option value="cooking">Cooking</option>
-                    </select>
+
+
                     <fieldset className="articleFieldset">
-                        <legend >New Article</legend>
-                        Title:
-                    <input className="newArticleInput" name="titleValue" placeholder="Article Title .." type="text" maxLength="40" value={this.state.titleValue} onChange={this.handleChange}></input> <br />
-                        Article:
-                    <textarea className="newArticleTextarea" name="articleBody" placeholder=" Article Text .." value={this.state.articleBody} onChange={this.handleChange} ></textarea> <br />
+                        <label for="topicSelector">Select topic: </label>
+                        <select id="topicSelector" className="topicSelectorNewArticle" name="topicValue" value={this.state.topicValue} onChange={this.handleChange}>
+                            <option value="">---</option>
+                            <option value="coding">Coding</option>
+                            <option value="football">Football</option>
+                            <option value="cooking">Cooking</option>
+                        </select>
+                        <label for="titleInput">Title:</label>
+                        <input id="titleInput" className="newArticleInput" name="titleValue" placeholder="Article Title .." type="text" maxLength="40" value={this.state.titleValue} onChange={this.handleChange}></input> <br />
+
+                        <label for="bodyInput">Article:</label>
+                        <textarea id="bodyInput" className="newArticleTextarea" name="articleBody" placeholder=" Article Text .." value={this.state.articleBody} onChange={this.handleChange} ></textarea> <br />
+
                     </fieldset>
                     <button className="submitButtonNewArticle" type="submit" value="submit" >Publish</button>
                 </form >
-                <hr className="textBreakNewArticle"></hr>
+                <div className="bottomContainer"></div>
             </main >
         );
     }

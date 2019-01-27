@@ -3,7 +3,7 @@ import Logo from '../../images/logo.png';
 
 const Header = () => {
     return (
-        <div>
+        <div className="topNav">
             <img
                 className="logoStyle"
                 src={Logo}

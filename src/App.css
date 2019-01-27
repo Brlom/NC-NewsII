@@ -1,14 +1,33 @@
 .App {
-  text-align: center;
   display: grid;
-  grid-template: 1 1 1 / 1;
-  grid-template-areas: 'header' 'home' 'footer';
+  grid-template-areas: 
+    'header header header'
+    'tabs tabs tabs' 
+    '. home .'
+    'footer footer footer';
+  grid-template-columns: 17% auto 17%;
+  grid-template-rows: auto;
   font-family: 'Roboto', sans-serif;
   /* background: linear-gradient(175deg, #ffffff, 40%, #ff505060); */
 } 
 
+textarea, input, button, select { font-family: inherit; font-size: inherit; }
+
+p {
+  line-height: 1.3;
+}
+
 ul {
   list-style: none;
+  padding-left: 0px;
+}
+
+.content {
+  grid-area: home;
+}
+
+.contentHeader {
+  text-align: center;
 }
 
 .logoStyle {
@@ -17,6 +36,11 @@ ul {
   margin: 10px 15px 15px 10px;
   width: 225px;
   height: 50px;
+}
+
+.voteButton {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 /*container for user select submit*/
@@ -31,7 +55,8 @@ ul {
 .bottomContainer {
   margin: auto;
   border-top: 16px dotted #00000010;
-  margin-top: 70px;
+  margin-top: 40px;
+  margin-bottom: 50px;
   width: 75%;
 }
 
@@ -79,6 +104,10 @@ ul {
   transition: background-color 0.25s ease-out;
 }
 
+.loginContainer {
+  text-align: center;
+}
+
 /*Welcome Screen*/
 .welcomeScreen {
   position: fixed;
@@ -109,12 +138,14 @@ ul {
 }
 
 /*Home component*/
-
 .textBreak {
   border: 2px solid #00000030;
   width: 75%;
 }
 
+.userArticleContainer  p {
+  line-height: 1.3;
+}
 .userArticleBottomContainer {
   margin: auto;
   border-bottom: 16px dotted #00000010;
@@ -143,7 +174,18 @@ ul {
   width: 75%;
 }
 
+.usersList {
+  text-align: center;
+}
 /*Tabs component*/
+.tabs {
+  grid-area: tabs;
+}
+
+.tab-content {
+  text-align: left;
+}
+
 .tab-list {
   border-bottom: 1px solid #ff5050;
   padding-left: 0;
@@ -165,6 +207,7 @@ ul {
 
 /* Topics component*/
 
+
 .topicArticleElements > li {
   display: inline;
 }
@@ -172,6 +215,8 @@ ul {
 .topicArticleElements > hr {
   border-bottom: 2px solid #00000030;
   width: 75%;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 /* Article component */
@@ -186,13 +231,7 @@ ul {
   margin-top: 20px;
 }
 
-.articleBottomContainer {
-  margin: auto;
-  border-bottom: 16px dotted #00000010;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  width: 75%;
-}
+
 
 .loadCommentsForArticle {
   background: #ffffff;
@@ -209,6 +248,10 @@ ul {
 }
 
 /* Comments Component */
+
+.commentFormContainer {
+  margin-top: 20px;
+}
 
 .commentsHR {
   border-bottom: 2px solid #00000030;
@@ -231,7 +274,7 @@ ul {
 }
 
 .commentsSort {
-  margin-left: 475px;
+  text-align: left;
 }
 
 .commentValueSelect {
@@ -241,9 +284,13 @@ ul {
   margin: 1px;
 }
 
+.commentInputForm {
+  text-align: center;
+  margin-top: 15px;
+}
 .commentTextarea {
   height: 75px;
-  width: 250px;
+  width: 90%;
   resize: none;
   border-radius: 8px;
 }
@@ -279,8 +326,7 @@ ul {
 
 .topicSelectorNewArticle {
   background: #ffffff;
-  border: none 2px;
-  border-radius: 10%;
+  border-radius: 8px;
   transition: background-color 0.3s ease-in;
   padding: 10px;
   font-family: sans-serif;
@@ -294,11 +340,6 @@ ul {
 
 .newArticleForm {
   padding: 15px;
-}
-
-.newArticleInput {
-  padding: 5px;
-  margin: 5px;
 }
 
 .submitButtonNewArticle {
@@ -321,15 +362,45 @@ ul {
   width: 75%;
 }
 
+.articleFieldset {
+  border: none;
+}
+
+.newArticleTextarea {
+  height: 200px;
+  resize: none;
+}
+
+input[type=text], select, textarea {
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */  
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 8px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
 /* Footer Component */
 
 .footer {
-  display: flex;
+  text-align: center;
+  display: inline;
   align-items: center;
   justify-content: center;
   font-size: 10px;
-  position: sticky;
-  bottom: 0;
-  width: 100%;
+  grid-area: footer;
   background: linear-gradient(175deg, #ffffff, 40%, #ff505060);
+  padding-top: 13px;
+  padding-bottom: 15px;
+}
+
+.footer > h1 {
+  display: inline;
+}
+
+.footer > img {
+  margin-right: 10px;
+  vertical-align: bottom;
 }

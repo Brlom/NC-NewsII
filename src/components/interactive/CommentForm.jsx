@@ -8,10 +8,9 @@ class CommentForm extends Component {
         commentBody: "",
     }
     render() {
-        const { user, comments } = this.props;
+        const { user } = this.props;
         return (
             <main>
-                <span>{comments.length} Comment(s) </span>
                 <label className="commentsSort">Sort by</label>
                 <select value={this.state.orderingValue} className="commentValueSelect" onChange={this.handleOrderChange}>
                     <option value="author">Author</option>
@@ -22,9 +21,10 @@ class CommentForm extends Component {
                     <option value="asc">Sort Ascending</option>
                     <option value="desc">Sort Descending</option>
                 </select>
-                <form onSubmit={this.handleComment}>
+                <form onSubmit={this.handleComment} className="commentInputForm">
                     <img src={user.avatar_url} alt="Avatar for logged in user" height="30px"></img>
                     <textarea type="text" className="commentTextarea" placeholder="leave a comment .." value={this.state.commentBody} onChange={this.handleInput} ></textarea>
+                    <br />
                     <button type="submit" className="commentSubmitButton"> Submit >> </button>
                 </form>
                 <hr className="commentsHR"></hr>

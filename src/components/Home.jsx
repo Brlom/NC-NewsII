@@ -14,7 +14,7 @@ class Home extends Component {
         if (loginSeen) {
             return (
                 <div className="userArticleContainer">
-                    <h2>My Articles</h2>
+                    <h2 className="contentHeader">My Articles</h2>
                     {articles.map(article => {
                         return (
                             <ul key={article.article_id}>
@@ -32,7 +32,7 @@ class Home extends Component {
                             </ul>
                         );
                     })}
-                    <div className="userArticleBottomContainer"></div>
+                    <div className="bottomContainer"></div>
                 </div>
             )
         } else {

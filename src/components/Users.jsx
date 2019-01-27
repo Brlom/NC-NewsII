@@ -10,14 +10,14 @@ class Users extends Component {
         const { users } = this.state;
         return (
             <React.Fragment>
-                <h2>Users</h2>
+                <h2 className="contentHeader">Users</h2>
                 <ul className="usersList">{users.map(user => {
                     return (
                         <div key={user.user_id}>
                             <li>
                                 <img src={user.avatar_url} alt="user avatar" height="50" width="50"></img>
                                 <Link to={`/users/${user.username}`}>{user.username}</Link>
-                                <br />
+                                {" | "}
                                 {user.name}
                             </li>
                             <hr className="textBreak"></hr>
@@ -25,7 +25,7 @@ class Users extends Component {
                     );
                 })}
                 </ul>
-                <div className="userBottomContainer"></div>
+                <div className="bottomContainer"></div>
             </React.Fragment>
         );
     }
